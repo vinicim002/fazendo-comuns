@@ -1,0 +1,42 @@
+import { Link } from 'react-router-dom'
+import { motion } from 'framer-motion'
+import { ArrowRight } from 'lucide-react'
+import type { Editorial } from '@/features/editoriais/data/editoriaisContent'
+import { Badge } from '@/components/ui/badge'
+
+interface EditorialCardProps {
+  editorial: Editorial
+  index: number
+}
+
+export function EditorialCard({ editorial, index }: EditorialCardProps) {
+  return (
+    <motion.article
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-60px' }}
+      transition={{ duration: 0.5, delay: index * 0.08 }}
+      className="group rounded-2xl border border-border/60 bg-card p-6 shadow-soft transition-all hover:-translate-y-1 hover:shadow-medium md:p-8"
+    >
+      <Badge variant="red" className="mb-4 font-ui uppercase tracking-wider">
+        Editorial {editorial.number}
+      </Badge>
+
+      <h2 className="font-heading text-2xl font-bold leading-snug text-foreground transition-colors group-hover:text-brand-red md:text-3xl">
+        <Link to={`/editoriais/${editorial.slug}`}>{editorial.title}</Link>
+      </h2>
+
+      <p className="mt-4 font-body text-base leading-relaxed text-muted-foreground md:text-lg">
+        {editorial.excerpt}
+      </p>
+
+      <Link
+        to={`/editoriais/${editorial.slug}`}
+        className="mt-6 inline-flex items-center gap-1.5 font-ui text-sm font-semibold text-brand-red transition-all group-hover:gap-2.5 hover:underline"
+      >
+        Leia mais
+        <ArrowRight className="size-4" aria-hidden="true" />
+      </Link>
+    </motion.article>
+  )
+}

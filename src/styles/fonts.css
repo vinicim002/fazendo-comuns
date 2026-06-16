@@ -1,0 +1,47 @@
+/*
+ * Fontes do projeto — fallbacks via Google Fonts até arquivos locais serem adicionados.
+ * Coloque os arquivos .woff2 em src/assets/fonts/ e descomente os @font-face.
+ */
+
+@font-face {
+  font-family: 'A Little Sunshine';
+  src: local('Fredoka'), url('../assets/fonts/a-little-sunshine.woff2') format('woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Sunday Donuts';
+  src: local('Fredoka'), url('../assets/fonts/sunday-donuts.woff2') format('woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geosans Light';
+  src: local('DM Sans'), url('../assets/fonts/geosans-light.woff2') format('woff2');
+  font-weight: 300;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Magic Bright Serif';
+  src: local('Source Serif 4'), url('../assets/fonts/magic-bright-serif.woff2') format('woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Asenine';
+  src: local('DM Sans'), url('../assets/fonts/asenine.woff2') format('woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Starrrk Delivery';
+  src: local('Fredoka'), url('../assets/fonts/starrrk-delivery.woff2') format('woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Futura';
+  src: local('Futura'), local('Century Gothic'), local('DM Sans');
+  font-display: swap;
+}
