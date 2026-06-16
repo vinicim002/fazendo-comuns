@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { ArrowLeft, Calendar, Camera, Download, MapPin } from 'lucide-react'
+import { ArrowLeft, Calendar, Camera, MapPin } from 'lucide-react'
 import { PageHero } from '@/components/layout/PageHero'
 import { ScrollReveal } from '@/components/shared/ScrollReveal'
 import { Button } from '@/components/ui/button'
@@ -15,7 +15,7 @@ export function RecrearMundosOutrosPage() {
     date,
     location,
     videoSection,
-    publication,
+    relatedBook,
   } = recrearMundosOutrosEvent
 
   return (
@@ -90,33 +90,39 @@ export function RecrearMundosOutrosPage() {
 
       <section
         className="section-padding bg-background"
-        aria-label="Publicação do evento"
+        aria-label="Livro relacionado ao evento"
       >
         <div className="container-app mx-auto max-w-6xl">
           <ScrollReveal>
             <article className="grid gap-8 lg:grid-cols-2 lg:items-center lg:gap-12">
               <div className="mx-auto w-full max-w-sm overflow-hidden rounded-2xl border border-border/60 bg-card shadow-medium lg:max-w-none">
                 <img
-                  src={publication.cover}
-                  alt={publication.coverAlt}
+                  src={relatedBook.cover}
+                  alt={relatedBook.coverAlt}
                   className="aspect-[501/735] w-full object-cover"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
 
-              <div className="flex flex-col items-start">
-                <h2 className="font-heading text-2xl font-bold uppercase leading-tight tracking-tight text-foreground md:text-3xl lg:text-4xl">
-                  {publication.title}
+              <div className="flex min-w-0 flex-col items-start">
+                <p className="font-ui text-sm font-semibold uppercase tracking-widest text-brand-red">
+                  Livro relacionado
+                </p>
+                <h2 className="mt-3 font-heading text-2xl font-bold leading-tight tracking-tight text-foreground md:text-3xl lg:text-4xl">
+                  {relatedBook.title}
                 </h2>
+                {relatedBook.subtitle ? (
+                  <p className="mt-3 font-body text-base text-muted-foreground md:text-lg">
+                    {relatedBook.subtitle}
+                  </p>
+                ) : null}
+                <p className="mt-4 max-w-xl font-body text-sm leading-relaxed text-muted-foreground md:text-base">
+                  {relatedBook.teaser}
+                </p>
 
                 <Button className="mt-8" asChild>
-                  <a
-                    href={publication.downloadUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Download className="size-4" aria-hidden="true" />
-                    {publication.downloadLabel}
-                  </a>
+                  <Link to={relatedBook.href}>Acessar página do livro</Link>
                 </Button>
               </div>
             </article>

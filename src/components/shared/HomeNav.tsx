@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ChevronDown, Menu, X } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { MobileNavList } from '@/components/shared/MobileNavList'
+import { useLockBodyScroll } from '@/hooks/useMobileMenu'
 import { mainNavigation } from '@/features/home/data/homeContent'
 import { cn } from '@/lib/utils'
 
@@ -9,8 +11,10 @@ export function HomeNav() {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null)
   const [mobileOpen, setMobileOpen] = useState(false)
 
+  useLockBodyScroll(mobileOpen)
+
   return (
-    <nav aria-label="Navegação principal" className="w-full">
+    <nav aria-label="Navegação principal" className="relative w-full">
       {/* Desktop */}
       <ul className="hidden flex-wrap items-center justify-center gap-1 lg:flex">
         {mainNavigation.map((item) => (
@@ -76,46 +80,28 @@ export function HomeNav() {
         </button>
       </div>
 
-      <AnimatePresence>
-        {mobileOpen && (
-          <motion.div
-            id="home-mobile-nav"
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="mt-4 overflow-hidden lg:hidden"
-          >
-            <ul className="space-y-1 rounded-2xl border border-border/60 bg-card p-3 shadow-soft">
-              {mainNavigation.map((item) => (
-                <li key={item.href}>
-                  <Link
-                    to={item.href}
-                    onClick={() => setMobileOpen(false)}
-                    className="block rounded-xl px-3 py-2.5 font-ui text-sm font-medium hover:bg-muted"
-                  >
-                    {item.label}
-                  </Link>
-                  {item.children && (
-                    <ul className="ml-3 space-y-0.5 border-l border-border pl-3">
-                      {item.children.map((child) => (
-                        <li key={child.href}>
-                          <Link
-                            to={child.href}
-                            onClick={() => setMobileOpen(false)}
-                            className="block rounded-lg px-3 py-2 font-ui text-xs text-muted-foreground hover:bg-muted hover:text-foreground"
-                          >
-                            {child.label}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {mobileOpen ? (
+        <div
+          className="fixed inset-0 z-40 bg-neutral-900/20 lg:hidden"
+          aria-hidden="true"
+          onClick={() => setMobileOpen(false)}
+        />
+      ) : null}
+
+      {mobileOpen ? (
+        <div
+          id="home-mobile-nav"
+          className="relative z-50 mt-4 lg:hidden"
+        >
+          <div className="max-h-[min(70dvh,32rem)] overflow-y-auto overscroll-contain rounded-2xl border border-border/60 bg-card p-3 shadow-soft">
+            <MobileNavList
+              onNavigate={() => setMobileOpen(false)}
+              linkClassName="text-sm"
+              childLinkClassName="text-xs"
+            />
+          </div>
+        </div>
+      ) : null}
     </nav>
   )
 }

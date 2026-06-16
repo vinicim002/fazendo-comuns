@@ -21,6 +21,9 @@ import {
   HomePage,
   JornalzinhoPage,
   LinksParceirosPage,
+  LivroDetailPage,
+  LivrosCapitulosPage,
+  LivrosPage,
   MaisIndexPage,
   MultimidiaPage,
   NoticiaDetailPage,
@@ -127,10 +130,7 @@ export const router = createBrowserRouter([
                 path: 'livros',
                 element: (
                   <Page>
-                    <ProducoesSubpagePlaceholder
-                      title="Livros e capítulos de livros"
-                      description="Livros e capítulos publicados pelo coletivo de pesquisa."
-                    />
+                    <LivrosCapitulosPage />
                   </Page>
                 ),
               },
@@ -232,6 +232,13 @@ export const router = createBrowserRouter([
       {
         path: 'contato',
         element: <Page><ContatoPage /></Page>,
+      },
+      {
+        path: 'livros',
+        children: [
+          { index: true, element: <Page><LivrosPage /></Page> },
+          { path: ':slug', element: <Page><LivroDetailPage /></Page> },
+        ],
       },
       {
         path: '*',

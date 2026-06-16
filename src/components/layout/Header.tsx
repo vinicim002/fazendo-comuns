@@ -2,7 +2,9 @@ import { Link } from 'react-router-dom'
 import { Menu, X, Mail } from 'lucide-react'
 import { InstagramIcon } from '@/components/shared/InstagramIcon'
 import { Logo } from '@/components/shared/Logo'
+import { MobileNavList } from '@/components/shared/MobileNavList'
 import { Button } from '@/components/ui/button'
+import { useCloseOnRouteChange, useLockBodyScroll } from '@/hooks/useMobileMenu'
 import { useUIStore } from '@/store/uiStore'
 import { mainNavigation } from '@/features/home/data/homeContent'
 import { cn } from '@/lib/utils'
@@ -10,6 +12,9 @@ import { cn } from '@/lib/utils'
 export function Header() {
   const isOpen = useUIStore((s) => s.isMobileMenuOpen)
   const setOpen = useUIStore((s) => s.setMobileMenuOpen)
+
+  useLockBodyScroll(isOpen)
+  useCloseOnRouteChange(() => setOpen(false))
 
   return (
     <header className="fixed top-0 right-0 left-0 z-50 border-b border-border/40 bg-background/80 backdrop-blur-md">
@@ -68,41 +73,29 @@ export function Header() {
         </div>
       </div>
 
+      {isOpen ? (
+        <div
+          className="fixed inset-0 top-16 z-40 bg-neutral-900/20 lg:hidden md:top-20"
+          aria-hidden="true"
+          onClick={() => setOpen(false)}
+        />
+      ) : null}
+
       <div
         id="mobile-menu"
         className={cn(
-          'overflow-hidden border-t border-border/40 bg-background transition-all duration-300 lg:hidden',
-          isOpen ? 'max-h-[80vh] opacity-100' : 'max-h-0 opacity-0',
+          'border-t border-border/40 bg-background lg:hidden',
+          isOpen ? 'pointer-events-auto' : 'pointer-events-none hidden',
         )}
         aria-hidden={!isOpen}
       >
-        <nav className="container-app space-y-1 py-4" aria-label="Navegação mobile">
-          {mainNavigation.map((item) => (
-            <div key={item.href}>
-              <Link
-                to={item.href}
-                className="block rounded-xl px-3 py-2.5 font-ui text-base font-medium hover:bg-muted"
-                onClick={() => setOpen(false)}
-              >
-                {item.label}
-              </Link>
-              {item.children && (
-                <div className="ml-4 space-y-1 border-l border-border pl-3">
-                  {item.children.map((child) => (
-                    <Link
-                      key={child.href}
-                      to={child.href}
-                      className="block rounded-lg px-3 py-2 font-ui text-sm text-muted-foreground hover:bg-muted hover:text-foreground"
-                      onClick={() => setOpen(false)}
-                    >
-                      {child.label}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
-          ))}
-          <div className="flex gap-2 pt-3">
+        <nav
+          className="container-app max-h-[calc(100dvh-4rem)] overflow-y-auto overscroll-contain py-4 md:max-h-[calc(100dvh-5rem)]"
+          aria-label="Navegação mobile"
+        >
+          <MobileNavList onNavigate={() => setOpen(false)} />
+
+          <div className="mt-4 flex gap-2 border-t border-border pt-4">
             <Button variant="default" className="flex-1" asChild>
               <Link to="/contato" onClick={() => setOpen(false)}>
                 <Mail className="size-4" aria-hidden="true" />
@@ -115,6 +108,7 @@ export function Header() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram do Fazendo Comuns"
+                onClick={() => setOpen(false)}
               >
                 <InstagramIcon />
               </a>

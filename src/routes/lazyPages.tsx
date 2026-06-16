@@ -51,6 +51,11 @@ export const ProducoesSubpagePlaceholder = lazy(() =>
     default: m.ProducoesSubpagePlaceholder,
   })),
 )
+export const LivrosCapitulosPage = lazy(() =>
+  import('@/pages/projeto/LivrosCapitulosPage').then((m) => ({
+    default: m.LivrosCapitulosPage,
+  })),
+)
 export const BibliografiaPage = lazy(() =>
   import('@/pages/projeto/BibliografiaPage').then((m) => ({
     default: m.BibliografiaPage,
@@ -134,4 +139,10 @@ export const LinksParceirosPage = lazy(() =>
 )
 export const ContatoPage = lazy(() =>
   import('@/pages/ContatoPage').then((m) => ({ default: m.ContatoPage })),
+)
+export const LivroDetailPage = lazy(() =>
+  import('@/pages/livros/LivroDetailPage').then((m) => ({ default: m.LivroDetailPage })),
+)
+export const LivrosPage = lazy(() =>
+  import('@/pages/livros/LivrosPage').then((m) => ({ default: m.LivrosPage })),
 )

@@ -16,12 +16,14 @@ export const recrearMundosOutrosEvent = {
     videoTitle: 'Vídeo — Fazendo Comuns: educação intra e co-geracional',
     videoUrl: undefined as string | undefined,
   },
-  publication: {
-    title: 'Fazendo Comuns na escola… construir um mundo outro',
+  relatedBook: {
+    slug: 'recrear-mundos-outros',
+    title: 'Recrear Mundos Outros',
+    subtitle: 'Fazendo Comuns na escola… construir um mundo outro',
     cover: capaLivroImg,
-    coverAlt: 'Capa da publicação Fazendo Comuns na escola',
-    downloadUrl:
-      'https://www.fazendocomuns.com.br/_files/ugd/92a7cc_cc2e2e2c9cec4a85b6924959deae39a5.pdf',
-    downloadLabel: 'Download',
+    coverAlt: 'Capa do livro Recrear Mundos Outros',
+    href: '/livros/recrear-mundos-outros',
+    teaser:
+      'Publicação organizada a partir deste evento, disponível para leitura online e download gratuito.',
   },
 }

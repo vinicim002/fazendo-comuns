@@ -51,6 +51,7 @@ export const mainNavigation: NavItem[] = [
   },
   { label: 'Editoriais', href: '/editoriais' },
   { label: 'Notícias', href: '/noticias' },
+  { label: 'Livros', href: '/livros' },
   {
     label: 'Mais',
     href: '/mais',
