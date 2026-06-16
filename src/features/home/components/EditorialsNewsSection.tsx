@@ -7,114 +7,122 @@ import { ScrollReveal } from '@/components/shared/ScrollReveal'
 import { featuredEditorial, newsItems } from '@/features/home/data/homeContent'
 import quebraCabecaImg from '@/assets/imgs/quebra_Cabeça.png'
 
+function NewsHomeCard({
+  news,
+}: {
+  news: (typeof newsItems)[number]
+}) {
+  return (
+    <article className="group overflow-hidden rounded-2xl border border-border/60 bg-card shadow-soft transition-all hover:-translate-y-0.5 hover:shadow-medium">
+      <div className="flex min-w-0 flex-col min-[480px]:flex-row min-[480px]:items-stretch">
+        <div className="relative aspect-[16/10] w-full shrink-0 overflow-hidden bg-neutral-100 min-[480px]:aspect-auto min-[480px]:w-28 min-[480px]:min-h-[7.5rem] sm:w-32 sm:min-h-[8.5rem] md:w-36 md:min-h-[9.5rem]">
+          <img
+            src={news.image}
+            alt={news.imageAlt}
+            loading="lazy"
+            decoding="async"
+            className="size-full object-cover transition-transform duration-500 group-hover:scale-105 min-[480px]:absolute min-[480px]:inset-0"
+          />
+        </div>
+
+        <div className="min-w-0 flex-1 p-4 sm:p-5">
+          <time
+            dateTime={news.date}
+            className="block font-ui text-[0.6875rem] uppercase tracking-wider text-muted-foreground sm:text-xs"
+          >
+            {format(parseISO(news.date), "d 'de' MMMM 'de' yyyy", { locale: ptBR })}
+          </time>
+          <h4 className="mt-2 break-words font-heading text-[0.9375rem] font-semibold leading-snug transition-colors group-hover:text-brand-red sm:text-base md:text-lg">
+            {news.title}
+          </h4>
+          <p className="mt-2 line-clamp-2 break-words font-body text-sm text-muted-foreground sm:line-clamp-3">
+            {news.excerpt}
+          </p>
+          <Link
+            to={`/noticias/${news.slug}`}
+            className="mt-3 inline-flex items-center gap-1 font-ui text-sm font-medium text-brand-red hover:underline"
+          >
+            Ler mais
+            <ArrowRight className="size-3.5 shrink-0" aria-hidden="true" />
+          </Link>
+        </div>
+      </div>
+    </article>
+  )
+}
+
 export function EditorialsNewsSection() {
   return (
     <section
-      className="bg-background pt-[var(--spacing-section)] pb-28 sm:pb-36 md:pb-44"
+      className="overflow-x-clip bg-background pt-[var(--spacing-section)] pb-28 sm:pb-36 md:pb-44"
       aria-labelledby="editorials-news-title"
     >
-      <div className="container-app">
+      <div className="container-app min-w-0">
         <h2 id="editorials-news-title" className="sr-only">
           Editoriais e Notícias
         </h2>
 
-        <div className="grid gap-12 lg:grid-cols-2 lg:gap-20 xl:gap-24">
+        <div className="grid min-w-0 gap-10 sm:gap-12 lg:grid-cols-2 lg:items-start lg:gap-16 xl:gap-20">
           {/* Editoriais */}
-          <ScrollReveal direction="left">
-            <article className="flex h-full flex-col">
-              <div className="mb-6 flex justify-center lg:justify-start">
+          <ScrollReveal direction="up" className="min-w-0">
+            <article className="flex min-w-0 flex-col">
+              <div className="mb-4 flex justify-center sm:mb-6 lg:justify-start">
                 <img
                   src={quebraCabecaImg}
                   alt=""
-                  className="h-32 w-auto object-contain md:h-40"
+                  className="h-24 w-auto max-w-full object-contain sm:h-32 md:h-40"
                   aria-hidden="true"
                 />
               </div>
 
-              <h3 className="font-heading text-3xl font-bold text-brand-red md:text-4xl">
+              <h3 className="text-center font-heading text-2xl font-bold text-brand-red sm:text-3xl md:text-4xl lg:text-left">
                 Editoriais
               </h3>
 
-              <div className="mt-6 flex-1 rounded-2xl border border-border/60 bg-card p-6 shadow-soft md:p-8">
-                <h4 className="font-heading text-xl font-bold leading-snug md:text-2xl">
+              <div className="mt-4 min-w-0 rounded-2xl border border-border/60 bg-card p-4 shadow-soft sm:mt-6 sm:p-6 md:p-8">
+                <h4 className="break-words font-heading text-lg font-bold leading-snug sm:text-xl md:text-2xl">
                   {featuredEditorial.title}
                 </h4>
-                <p className="mt-4 font-body text-base leading-relaxed text-muted-foreground">
+                <p className="mt-3 break-words font-body text-sm leading-relaxed text-muted-foreground sm:mt-4 sm:text-base lg:line-clamp-[12] xl:line-clamp-none">
                   {featuredEditorial.excerpt}
                 </p>
                 <Link
                   to={`/editoriais/${featuredEditorial.slug}`}
-                  className="mt-5 inline-flex items-center gap-1 font-ui text-sm font-semibold text-brand-red transition-colors hover:underline"
+                  className="mt-4 inline-flex items-center gap-1 font-ui text-sm font-semibold text-brand-red transition-colors hover:underline sm:mt-5"
                 >
                   Leia mais
-                  <ArrowRight className="size-3.5" aria-hidden="true" />
+                  <ArrowRight className="size-3.5 shrink-0" aria-hidden="true" />
                 </Link>
               </div>
 
-              <Button className="mt-6 w-full sm:w-auto" asChild>
+              <Button className="mt-4 w-full sm:mt-6 sm:w-auto" asChild>
                 <Link to="/editoriais">
                   Ver todos os editoriais
-                  <ArrowRight className="size-4" aria-hidden="true" />
+                  <ArrowRight className="size-4 shrink-0" aria-hidden="true" />
                 </Link>
               </Button>
             </article>
           </ScrollReveal>
 
           {/* Notícias */}
-          <ScrollReveal direction="right" delay={0.15}>
-            <div>
-              <h3 className="font-heading text-3xl font-bold text-brand-orange md:text-4xl">
+          <ScrollReveal direction="up" delay={0.1} className="min-w-0">
+            <div className="min-w-0">
+              <h3 className="text-center font-heading text-2xl font-bold text-brand-orange sm:text-3xl md:text-4xl lg:text-left">
                 Notícias
               </h3>
 
-              <ul className="mt-6 space-y-4">
-                {newsItems.map((news, index) => (
-                  <li key={news.id}>
-                    <ScrollReveal delay={index * 0.06}>
-                      <article className="group overflow-hidden rounded-2xl border border-border/60 bg-card shadow-soft transition-all hover:-translate-y-0.5 hover:shadow-medium">
-                        <div className="flex flex-col sm:flex-row sm:items-stretch">
-                          <div className="relative h-36 shrink-0 overflow-hidden sm:h-auto sm:w-36 md:w-44">
-                            <img
-                              src={news.image}
-                              alt={news.imageAlt}
-                              className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                            />
-                          </div>
-
-                          <div className="flex flex-1 flex-col p-5">
-                            <time
-                              dateTime={news.date}
-                              className="font-ui text-xs uppercase tracking-wider text-muted-foreground"
-                            >
-                              {format(parseISO(news.date), "d 'de' MMMM 'de' yyyy", {
-                                locale: ptBR,
-                              })}
-                            </time>
-                            <h4 className="mt-2 font-heading text-base font-semibold leading-snug transition-colors group-hover:text-brand-red md:text-lg">
-                              {news.title}
-                            </h4>
-                            <p className="mt-2 line-clamp-2 flex-1 font-body text-sm text-muted-foreground">
-                              {news.excerpt}
-                            </p>
-                            <Link
-                              to={`/noticias/${news.slug}`}
-                              className="mt-3 inline-flex items-center gap-1 font-ui text-sm font-medium text-brand-red hover:underline"
-                            >
-                              Ler mais
-                              <ArrowRight className="size-3.5" aria-hidden="true" />
-                            </Link>
-                          </div>
-                        </div>
-                      </article>
-                    </ScrollReveal>
+              <ul className="mt-4 space-y-3 sm:mt-6 sm:space-y-4">
+                {newsItems.map((news) => (
+                  <li key={news.id} className="min-w-0">
+                    <NewsHomeCard news={news} />
                   </li>
                 ))}
               </ul>
 
-              <Button variant="outline" className="mt-6 w-full sm:w-auto" asChild>
+              <Button variant="outline" className="mt-4 w-full sm:mt-6 sm:w-auto" asChild>
                 <Link to="/noticias">
                   Ver todas as notícias
-                  <ArrowRight className="size-4" aria-hidden="true" />
+                  <ArrowRight className="size-4 shrink-0" aria-hidden="true" />
                 </Link>
               </Button>
             </div>
