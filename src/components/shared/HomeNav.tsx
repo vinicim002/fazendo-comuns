@@ -2,16 +2,14 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ChevronDown, Menu, X } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { MobileNavList } from '@/components/shared/MobileNavList'
-import { useLockBodyScroll } from '@/hooks/useMobileMenu'
+import { MobileNavDrawer } from '@/components/shared/MobileNavDrawer'
+import { ThemeToggle } from '@/components/shared/ThemeToggle'
 import { mainNavigation } from '@/features/home/data/homeContent'
 import { cn } from '@/lib/utils'
 
 export function HomeNav() {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null)
   const [mobileOpen, setMobileOpen] = useState(false)
-
-  useLockBodyScroll(mobileOpen)
 
   return (
     <nav aria-label="Navegação principal" className="relative w-full">
@@ -65,8 +63,9 @@ export function HomeNav() {
         ))}
       </ul>
 
-      {/* Mobile toggle */}
-      <div className="flex justify-center lg:hidden">
+      {/* Mobile */}
+      <div className="flex items-center justify-center gap-2 lg:hidden">
+        <ThemeToggle />
         <button
           type="button"
           onClick={() => setMobileOpen(!mobileOpen)}
@@ -80,28 +79,14 @@ export function HomeNav() {
         </button>
       </div>
 
-      {mobileOpen ? (
-        <div
-          className="fixed inset-0 z-40 bg-neutral-900/20 lg:hidden"
-          aria-hidden="true"
-          onClick={() => setMobileOpen(false)}
-        />
-      ) : null}
-
-      {mobileOpen ? (
-        <div
-          id="home-mobile-nav"
-          className="relative z-50 mt-4 lg:hidden"
-        >
-          <div className="max-h-[min(70dvh,32rem)] overflow-y-auto overscroll-contain rounded-2xl border border-border/60 bg-card p-3 shadow-soft">
-            <MobileNavList
-              onNavigate={() => setMobileOpen(false)}
-              linkClassName="text-sm"
-              childLinkClassName="text-xs"
-            />
-          </div>
-        </div>
-      ) : null}
+      <MobileNavDrawer
+        isOpen={mobileOpen}
+        onClose={() => setMobileOpen(false)}
+        id="home-mobile-nav"
+        variant="inline"
+        linkClassName="text-sm"
+        childLinkClassName="text-xs"
+      />
     </nav>
   )
 }

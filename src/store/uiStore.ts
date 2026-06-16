@@ -1,20 +1,49 @@
 import { create } from 'zustand'
+import { persist } from 'zustand/middleware'
+
+export type ThemeMode = 'light' | 'dark'
 
 interface UIState {
   isMobileMenuOpen: boolean
-  theme: 'light' | 'dark'
+  theme: ThemeMode
   setMobileMenuOpen: (open: boolean) => void
   toggleMobileMenu: () => void
-  setTheme: (theme: 'light' | 'dark') => void
+  setTheme: (theme: ThemeMode) => void
   toggleTheme: () => void
 }
 
-export const useUIStore = create<UIState>((set) => ({
-  isMobileMenuOpen: false,
-  theme: 'light',
-  setMobileMenuOpen: (open) => set({ isMobileMenuOpen: open }),
-  toggleMobileMenu: () => set((s) => ({ isMobileMenuOpen: !s.isMobileMenuOpen })),
-  setTheme: (theme) => set({ theme }),
-  toggleTheme: () =>
-    set((s) => ({ theme: s.theme === 'light' ? 'dark' : 'light' })),
-}))
+function getInitialTheme(): ThemeMode {
+  if (typeof window === 'undefined') return 'light'
+
+  try {
+    const stored = localStorage.getItem('fazendo-comuns-ui')
+    if (stored) {
+      const parsed = JSON.parse(stored) as { state?: { theme?: ThemeMode } }
+      if (parsed.state?.theme === 'dark' || parsed.state?.theme === 'light') {
+        return parsed.state.theme
+      }
+    }
+  } catch {
+    // preferência inválida — usa fallback do sistema
+  }
+
+  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+}
+
+export const useUIStore = create<UIState>()(
+  persist(
+    (set) => ({
+      isMobileMenuOpen: false,
+      theme: getInitialTheme(),
+      setMobileMenuOpen: (open) => set({ isMobileMenuOpen: open }),
+      toggleMobileMenu: () => set((s) => ({ isMobileMenuOpen: !s.isMobileMenuOpen })),
+      setTheme: (theme) => set({ theme }),
+      toggleTheme: () =>
+        set((s) => ({ theme: s.theme === 'light' ? 'dark' : 'light' })),
+    }),
+    {
+      name: 'fazendo-comuns-ui',
+      partialize: (state) => ({ theme: state.theme }),
+    },
+  ),
+)

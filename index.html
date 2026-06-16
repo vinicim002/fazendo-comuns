@@ -10,6 +10,18 @@
       content="Fazendo Comuns — pesquisa sobre recreio nas escolas públicas, coordenado pela UFRJ."
     />
     <title>Fazendo Comuns | A Escola Como Projeto Intra e Co-geracional</title>
+    <script>
+      ;(() => {
+        try {
+          const stored = localStorage.getItem('fazendo-comuns-ui')
+          const theme = stored ? JSON.parse(stored)?.state?.theme : null
+          const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+          if (theme === 'dark' || (!theme && prefersDark)) {
+            document.documentElement.classList.add('dark')
+          }
+        } catch (_) {}
+      })()
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

@@ -1,8 +1,8 @@
 import { createContext, useContext, useEffect, type ReactNode } from 'react'
-import { useUIStore } from '@/store/uiStore'
+import { useUIStore, type ThemeMode } from '@/store/uiStore'
 
 interface ThemeContextValue {
-  theme: 'light' | 'dark'
+  theme: ThemeMode
   toggleTheme: () => void
 }
 
@@ -16,6 +16,11 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     const root = document.documentElement
     root.classList.remove('light', 'dark')
     root.classList.add(theme)
+
+    const metaTheme = document.querySelector('meta[name="theme-color"]')
+    if (metaTheme) {
+      metaTheme.setAttribute('content', theme === 'dark' ? '#0f0d0a' : '#ef3220')
+    }
   }, [theme])
 
   return (

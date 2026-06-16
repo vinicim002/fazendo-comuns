@@ -40,6 +40,7 @@ import {
   VideoDetailPage,
   VideosPage,
 } from '@/routes/lazyPages'
+import { adminRoutes } from '@/routes/adminRoutes'
 
 export const router = createBrowserRouter([
   {
@@ -246,4 +247,5 @@ export const router = createBrowserRouter([
       },
     ],
   },
+  ...adminRoutes,
 ])
