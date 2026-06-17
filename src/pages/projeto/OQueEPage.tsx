@@ -66,23 +66,26 @@ function SectionImage({ section }: { section: OQueESection }) {
   if (!section.image) return null
 
   const isLogos = section.id === 'qualificacao'
+  const isIntro = section.id === 'introducao'
 
   return (
-    <figure className="group">
+    <figure className={cn('group', isIntro && 'flex h-full flex-col')}>
       <div
         className={cn(
           'overflow-hidden rounded-2xl border shadow-medium transition-shadow duration-300 group-hover:shadow-strong',
           isLogos
             ? 'border-border/60 bg-muted p-5 md:p-6'
             : 'border-border/60 bg-card',
+          isIntro && 'relative aspect-[4/5] min-h-[20rem] sm:min-h-[24rem] lg:aspect-auto lg:min-h-full lg:flex-1',
         )}
       >
         <img
           src={section.image.src}
           alt={section.image.alt}
           className={cn(
-            'w-full object-contain',
-            isLogos ? 'mx-auto max-h-48 md:max-h-56' : 'aspect-[2/1]',
+            isLogos && 'mx-auto max-h-48 w-full object-contain md:max-h-56',
+            isIntro && 'absolute inset-0 h-full w-full object-cover object-center',
+            !isLogos && !isIntro && 'aspect-[2/1] w-full object-contain',
           )}
           loading="lazy"
           decoding="async"
@@ -98,7 +101,6 @@ function SectionImage({ section }: { section: OQueESection }) {
 }
 
 function SectionBody({ section }: { section: OQueESection }) {
-  const highlightIndex = section.highlightParagraphIndex
   const isQualificacao = section.id === 'qualificacao'
 
   if (isQualificacao) {
@@ -120,28 +122,7 @@ function SectionBody({ section }: { section: OQueESection }) {
 
   return (
     <div className="space-y-6">
-      {section.paragraphs.map((paragraph, index) => {
-        const isHighlight = highlightIndex === index
-
-        if (isHighlight) {
-          return (
-            <blockquote
-              key={index}
-              className="relative rounded-2xl border border-brand-amber/40 bg-brand-amber/10 px-6 py-5 shadow-soft md:px-8 md:py-6"
-            >
-              <div
-                className="absolute top-0 left-0 h-full w-1 rounded-l-2xl bg-brand-amber"
-                aria-hidden="true"
-              />
-              <p className={paragraphClass}>
-                {paragraph}
-              </p>
-            </blockquote>
-          )
-        }
-
-        return renderParagraph(paragraph, index)
-      })}
+      {section.paragraphs.map((paragraph, index) => renderParagraph(paragraph, index))}
 
       {section.id === 'historico' ? (
         <div className="pt-2">
@@ -204,7 +185,7 @@ export function OQueEPage() {
                 ) : hasVisual ? (
                   <div
                     className={cn(
-                      'grid gap-10 lg:grid-cols-2 lg:items-start lg:gap-12',
+                      'grid gap-10 lg:grid-cols-2 lg:items-stretch lg:gap-12',
                       section.title && 'mt-0',
                     )}
                   >
@@ -219,7 +200,7 @@ export function OQueEPage() {
 
                     <div
                       className={cn(
-                        'lg:sticky lg:top-28',
+                        'lg:sticky lg:top-28 lg:flex lg:flex-col',
                         imageOnLeft && 'lg:order-2',
                         !imageOnLeft && 'lg:order-1',
                       )}

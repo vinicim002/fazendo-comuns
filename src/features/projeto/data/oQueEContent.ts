@@ -10,8 +10,9 @@ export interface OQueESection {
   paragraphs: string[]
   image?: OQueEImage
   imagePosition?: 'left' | 'right'
-  highlightParagraphIndex?: number
 }
+
+import cartazFazendoComunsImg from '@/assets/imgs/cartazFazendoComuns.jfif'
 
 const wixBase = 'https://static.wixstatic.com/media'
 
@@ -34,11 +35,10 @@ export const oQueEContent = {
       id: 'introducao',
       imagePosition: 'right',
       image: {
-        src: wixImage('92a7cc_03dbde20c3614298be97ae63a92a5075', 'png', 1200, 600),
+        src: cartazFazendoComunsImg,
         alt: 'Estudante segurando cartaz ilustrado do projeto Fazendo Comuns na escola',
         caption: 'Cartaz produzido no âmbito do projeto nas escolas parceiras.',
       },
-      highlightParagraphIndex: 2,
       paragraphs: [
         'Este é um projeto de pesquisa e intervenção social que investiga como ‘comuns’ são produzidos nas trocas entre os indivíduos nos lugares e espaços em que habitam e convivem. A noção de comuns aqui significa, utilizando a inspiração de autores como Gustavo Esteva e Massimo de Angelis, um conjunto de ações e valores que são estabelecidos pela ação, afetos e a experiência coletiva de um grupo social. Os comuns não são recursos que se usam, mas formas coletivas de abraçar, preservar e lutar pelo que é importante na vida com os outros.',
         'Estamos investigando os comuns na escola. E nestas investigações, as crianças e os adolescentes têm nos mostrado que o espaço escolar, valorizado por eles, mas que também é frequentemente sentido como uma prisão, deixa a desejar em muitos aspectos. Um deles é a falta do recreio escolar, e de um espaço apropriado para o recreio. De várias maneiras, e de forma orgânica, consistente e convincente, os estudantes têm apontado como a inexistência do recreio, ou sua duração diminuta, e outras tantas dificuldades impedem seus momentos de brincadeiras, conversas e liberdade dentro da escola.',

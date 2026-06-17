@@ -66,6 +66,11 @@ export const LivrosCapitulosPage = lazy(() =>
     default: m.LivrosCapitulosPage,
   })),
 )
+export const ArtigosPage = lazy(() =>
+  import('@/pages/projeto/ArtigosPage').then((m) => ({
+    default: m.ArtigosPage,
+  })),
+)
 export const BibliografiaPage = lazy(() =>
   import('@/pages/projeto/BibliografiaPage').then((m) => ({
     default: m.BibliografiaPage,

@@ -22,6 +22,7 @@ import {
   JornalzinhoPage,
   LinksParceirosPage,
   LivroDetailPage,
+  ArtigosPage,
   LivrosCapitulosPage,
   LivrosPage,
   MaisIndexPage,
@@ -32,7 +33,6 @@ import {
   ParceirosPage,
   PodcastPage,
   ProducoesPage,
-  ProducoesSubpagePlaceholder,
   ProfessoresFalamPage,
   ManifestoDasProfessorasPage,
   SociedadeFalamPage,
@@ -61,6 +61,14 @@ export const router = createBrowserRouter([
       {
         path: 'editorial-03-2025',
         element: <Navigate to="/editoriais/editorial-03-2025" replace />,
+      },
+      {
+        path: 'produções-nacionais',
+        element: <Navigate to="/projeto/producoes/artigos" replace />,
+      },
+      {
+        path: 'producoes-nacionais',
+        element: <Navigate to="/projeto/producoes/artigos" replace />,
       },
       {
         path: 'o-projeto-falatorio',
@@ -142,10 +150,7 @@ export const router = createBrowserRouter([
                 path: 'artigos',
                 element: (
                   <Page>
-                    <ProducoesSubpagePlaceholder
-                      title="Artigos"
-                      description="Artigos científicos do grupo de pesquisa e do NIAJ/UFRJ."
-                    />
+                    <ArtigosPage />
                   </Page>
                 ),
               },
