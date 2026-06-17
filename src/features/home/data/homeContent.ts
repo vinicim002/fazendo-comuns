@@ -146,7 +146,7 @@ export const featuredEditorial = {
   title: 'As professoras discutem o recreio',
   excerpt:
     '“Você entende que é direito da criança ter professor, antes mesmo do recreio?” Deparamo-nos com esta pergunta em uma roda de conversa com professoras do ensino público municipal carioca. Entendemos que a participação delas no cotidiano escolar está intrinsecamente ligada às possibilidades de se efetivar o recreio das crianças nas instituições públicas de ensino.',
-  slug: 'as-professoras-discutem-o-recreio',
+  slug: 'editorial-03-2025',
 }
 
 export const newsItems = newsItemsForHome

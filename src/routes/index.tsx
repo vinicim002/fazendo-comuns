@@ -1,4 +1,4 @@
-import { createBrowserRouter } from 'react-router-dom'
+import { createBrowserRouter, Navigate } from 'react-router-dom'
 import { MainLayout } from '@/components/layout/MainLayout'
 import { NotFoundPage } from '@/pages/NotFoundPage'
 import { Page } from '@/routes/PageSuspense'
@@ -50,6 +50,18 @@ export const router = createBrowserRouter([
     element: <MainLayout />,
     children: [
       { index: true, element: <Page><HomePage /></Page> },
+      {
+        path: 'editorial-01-2024',
+        element: <Navigate to="/editoriais/editorial-01-2024" replace />,
+      },
+      {
+        path: 'editorial-02-2024',
+        element: <Navigate to="/editoriais/editorial-02-2024" replace />,
+      },
+      {
+        path: 'editorial-03-2025',
+        element: <Navigate to="/editoriais/editorial-03-2025" replace />,
+      },
       {
         path: 'o-projeto-falatorio',
         element: <Page><ProjetoCombinacaoPage /></Page>,
@@ -223,6 +235,14 @@ export const router = createBrowserRouter([
         path: 'editoriais',
         children: [
           { index: true, element: <Page><EditoriaisPage /></Page> },
+          {
+            path: 'as-criancas-sao-sujeitos-politicos',
+            element: <Navigate to="/editoriais/editorial-02-2024" replace />,
+          },
+          {
+            path: 'as-professoras-discutem-o-recreio',
+            element: <Navigate to="/editoriais/editorial-03-2025" replace />,
+          },
           { path: ':slug', element: <Page><EditorialDetailPage /></Page> },
         ],
       },

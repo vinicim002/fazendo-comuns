@@ -23,10 +23,12 @@ export function EditorialCard({ editorial, index }: EditorialCardProps) {
       </Badge>
 
       <h2 className="font-heading text-2xl font-bold leading-snug text-foreground transition-colors group-hover:text-brand-red md:text-3xl">
-        <Link to={`/editoriais/${editorial.slug}`}>{editorial.title}</Link>
+        <Link to={`/editoriais/${editorial.slug}`}>
+          {editorial.subtitle ?? editorial.title}
+        </Link>
       </h2>
 
-      <p className="mt-4 font-body text-base leading-relaxed text-muted-foreground md:text-lg">
+      <p className="mt-4 font-body text-base leading-relaxed text-justify text-muted-foreground md:text-lg">
         {editorial.excerpt}
       </p>
 

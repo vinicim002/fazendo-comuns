@@ -6,14 +6,17 @@ import { Button } from '@/components/ui/button'
 import { projetoCombinacaoContent } from '@/features/projeto-combinacao/data/projetoCombinacaoContent'
 import { cn } from '@/lib/utils'
 
+const paragraphClass =
+  'font-body text-base leading-relaxed text-justify text-foreground md:text-lg md:leading-loose'
+
+const paragraphClassSm =
+  'font-body text-sm leading-relaxed text-justify text-foreground md:text-base md:leading-loose'
+
 function Paragraphs({ paragraphs }: { paragraphs: string[] }) {
   return (
     <div className="space-y-6">
       {paragraphs.map((paragraph, index) => (
-        <p
-          key={index}
-          className="font-body text-base leading-relaxed text-foreground md:text-lg md:leading-loose"
-        >
+        <p key={index} className={paragraphClass}>
           {paragraph}
         </p>
       ))}
@@ -115,24 +118,17 @@ export function ProjetoCombinacaoPage() {
       <section className="section-padding bg-background" aria-label="Dimensões investigadas">
         <div className="container-app mx-auto max-w-3xl">
           <ScrollReveal>
-            <p className="font-body text-base leading-relaxed text-foreground md:text-lg md:leading-loose">
-              {dimensions.intro}
-            </p>
+            <p className={paragraphClass}>{dimensions.intro}</p>
 
             <ul className="mt-6 space-y-3 border-l-2 border-brand-amber/50 pl-6">
               {dimensions.items.map((item) => (
-                <li
-                  key={item}
-                  className="font-body text-base leading-relaxed text-foreground md:text-lg"
-                >
+                <li key={item} className={cn(paragraphClass, 'md:leading-relaxed')}>
                   {item}
                 </li>
               ))}
             </ul>
 
-            <p className="mt-8 font-body text-base leading-relaxed text-foreground md:text-lg md:leading-loose">
-              {dimensions.outro}
-            </p>
+            <p className={cn('mt-8', paragraphClass)}>{dimensions.outro}</p>
           </ScrollReveal>
         </div>
       </section>
@@ -200,10 +196,7 @@ export function ProjetoCombinacaoPage() {
 
             <ol className="mt-8 space-y-4 border-l-2 border-brand-amber/40 pl-6 md:pl-8">
               {references.map((entry, index) => (
-                <li
-                  key={index}
-                  className="font-body text-sm leading-relaxed text-foreground md:text-base md:leading-loose"
-                >
+                <li key={index} className={paragraphClassSm}>
                   {entry}
                 </li>
               ))}

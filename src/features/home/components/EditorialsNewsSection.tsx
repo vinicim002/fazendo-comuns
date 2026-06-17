@@ -83,7 +83,7 @@ export function EditorialsNewsSection() {
                 <h4 className="break-words font-heading text-lg font-bold leading-snug sm:text-xl md:text-2xl">
                   {featuredEditorial.title}
                 </h4>
-                <p className="mt-3 break-words font-body text-sm leading-relaxed text-muted-foreground sm:mt-4 sm:text-base lg:line-clamp-[12] xl:line-clamp-none">
+                <p className="mt-3 break-words font-body text-sm leading-relaxed text-justify text-muted-foreground sm:mt-4 sm:text-base lg:line-clamp-[12] xl:line-clamp-none">
                   {featuredEditorial.excerpt}
                 </p>
                 <Link
