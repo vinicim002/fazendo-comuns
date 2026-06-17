@@ -83,12 +83,6 @@ export const carouselSlides = [
     alt: 'Atividade do projeto Fazendo Comuns em escola parceira',
     caption: 'Pesquisa sobre recreio e convivência escolar',
   },
-  {
-    id: '3',
-    src: asCriancasFalamHeroImage,
-    alt: 'Crianças participando do evento As Crianças Falam',
-    caption: 'A voz das crianças sobre o recreio',
-  },
 ]
 
 export const mainTitle = {
