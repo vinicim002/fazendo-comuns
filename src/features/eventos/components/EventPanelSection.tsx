@@ -65,7 +65,7 @@ export function EventPanelSection({ panel, index }: EventPanelSectionProps) {
               <h2 className="font-heading text-xl font-bold leading-snug text-foreground md:text-2xl lg:text-3xl">
                 {panel.title}
               </h2>
-              <p className="mt-4 font-body text-base leading-relaxed text-muted-foreground md:text-lg md:leading-loose">
+              <p className="mt-4 font-body text-base leading-relaxed text-justify text-muted-foreground md:text-lg md:leading-loose">
                 {panel.description}
               </p>
             </div>

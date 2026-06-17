@@ -8,7 +8,6 @@ interface PageHeroProps {
   title: string
   subtitle?: string
   breadcrumb?: { label: string; href?: string }[]
-  align?: 'left' | 'center'
   className?: string
 }
 
@@ -16,7 +15,6 @@ export function PageHero({
   title,
   subtitle,
   breadcrumb,
-  align = 'center',
   className,
 }: PageHeroProps) {
   const shouldReduceMotion = useReducedMotion()
@@ -37,8 +35,8 @@ export function PageHero({
     >
       <div className="container-app py-14 md:py-20">
         {breadcrumb && breadcrumb.length > 0 && (
-          <nav aria-label="Breadcrumb" className="mb-6">
-            <ol className="flex flex-wrap items-center gap-1.5 font-ui text-sm text-muted-foreground">
+          <nav aria-label="Breadcrumb" className="mb-6 flex justify-center">
+            <ol className="flex flex-wrap items-center justify-center gap-1.5 font-ui text-sm text-muted-foreground">
               {breadcrumb.map((item, index) => (
                 <li key={item.label} className="flex items-center gap-1.5">
                   {index > 0 && (
@@ -60,20 +58,12 @@ export function PageHero({
           </nav>
         )}
 
-        <div
-          className={cn(
-            'relative',
-            align === 'center' && 'mx-auto max-w-4xl text-center',
-          )}
-        >
+        <div className="relative mx-auto max-w-4xl text-center">
           <motion.img
             {...motionProps}
             src={quebraCabecaImg}
             alt=""
-            className={cn(
-              'mb-6 h-20 w-auto object-contain md:h-24',
-              align === 'center' ? 'mx-auto' : '',
-            )}
+            className="mx-auto mb-6 h-20 w-auto object-contain md:h-24"
             aria-hidden="true"
           />
 

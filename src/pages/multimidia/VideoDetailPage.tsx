@@ -29,7 +29,6 @@ export function VideoDetailPage({ slug: slugProp }: VideoDetailPageProps = {}) {
           { label: 'Vídeos', href: '/multimidia/videos' },
           { label: video.title },
         ]}
-        align="left"
       />
 
       <section className="section-padding bg-background" aria-label={video.title}>

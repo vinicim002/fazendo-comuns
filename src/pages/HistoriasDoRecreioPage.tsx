@@ -14,7 +14,6 @@ export function HistoriasDoRecreioPage() {
       <PageHero
         title={title}
         breadcrumb={[{ label: 'Início', href: '/' }, { label: title }]}
-        align="left"
       />
 
       <section className="section-padding bg-background" aria-label="Histórias do recreio">

@@ -34,6 +34,8 @@ import {
   ProducoesPage,
   ProducoesSubpagePlaceholder,
   ProfessoresFalamPage,
+  ManifestoDasProfessorasPage,
+  SociedadeFalamPage,
   ProjetoCombinacaoPage,
   ProjetoPage,
   RecrearMundosOutrosPage,
@@ -59,6 +61,14 @@ export const router = createBrowserRouter([
       {
         path: 'professores-falam',
         element: <Page><ProfessoresFalamPage /></Page>,
+      },
+      {
+        path: 'manifesto-das-professoras',
+        element: <Page><ManifestoDasProfessorasPage /></Page>,
+      },
+      {
+        path: 'a-sociedade-fala',
+        element: <Page><SociedadeFalamPage /></Page>,
       },
       {
         path: 'historias-do-recreio',

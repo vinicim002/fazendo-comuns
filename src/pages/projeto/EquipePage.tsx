@@ -20,7 +20,6 @@ export function EquipePage() {
           { label: 'O projeto', href: '/projeto' },
           { label: title },
         ]}
-        align="left"
       />
 
       {groups.map((group, groupIndex) => (

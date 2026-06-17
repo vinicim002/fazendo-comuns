@@ -18,7 +18,6 @@ export function ProducoesPage() {
           { label: 'O projeto', href: '/projeto' },
           { label: title },
         ]}
-        align="left"
       />
 
       <section className="section-padding bg-background" aria-label="Produções do projeto">

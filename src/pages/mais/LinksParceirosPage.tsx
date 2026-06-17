@@ -18,7 +18,6 @@ export function LinksParceirosPage() {
           { label: 'Mais', href: '/mais' },
           { label: title },
         ]}
-        align="left"
       />
 
       <section className="section-padding bg-background" aria-label="Links de parceiros">

@@ -28,7 +28,7 @@ export function ProjetoCombinacaoPage() {
     books,
     dimensions,
     recreioImage,
-    pdf,
+    relatedPublication,
     references,
   } = projetoCombinacaoContent
 
@@ -39,7 +39,6 @@ export function ProjetoCombinacaoPage() {
       <PageHero
         title={title}
         breadcrumb={[{ label: 'Início', href: '/' }, { label: title }]}
-        align="left"
       />
 
       <section className="section-padding bg-background" aria-label="Apresentação do projeto">
@@ -134,29 +133,65 @@ export function ProjetoCombinacaoPage() {
             <p className="mt-8 font-body text-base leading-relaxed text-foreground md:text-lg md:leading-loose">
               {dimensions.outro}
             </p>
-
-            <figure className="mt-10 overflow-hidden rounded-2xl border border-border/60 bg-card shadow-soft">
-              <img
-                src={recreioImage.url}
-                alt={recreioImage.alt}
-                className="w-full object-contain"
-                loading="lazy"
-              />
-            </figure>
-
-            <div className="mt-10 text-center">
-              <Button size="lg" className="bg-brand-orange hover:bg-brand-orange/90" asChild>
-                <a href={pdf.url} target="_blank" rel="noopener noreferrer">
-                  <Download className="size-4" aria-hidden="true" />
-                  {pdf.label}
-                </a>
-              </Button>
-            </div>
           </ScrollReveal>
         </div>
       </section>
 
-      <section className="section-padding bg-muted" aria-label="Referências bibliográficas">
+      <section
+        className="section-padding bg-muted"
+        aria-label="Livretos do Projeto CombinAção"
+      >
+        <div className="container-app mx-auto max-w-6xl">
+          <ScrollReveal>
+            <article className="grid gap-8 lg:grid-cols-2 lg:items-center lg:gap-12">
+              <div className="mx-auto w-full max-w-[200px] overflow-hidden rounded-2xl border border-border/60 bg-card shadow-medium sm:max-w-[240px] lg:mx-0 lg:max-w-[260px]">
+                <img
+                  src={recreioImage.url}
+                  alt={recreioImage.alt}
+                  className="w-full object-contain"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+
+              <div className="flex min-w-0 flex-col items-start">
+                <p className="font-ui text-sm font-semibold uppercase tracking-widest text-brand-orange">
+                  Publicação
+                </p>
+                <h2 className="mt-3 font-heading text-2xl font-bold leading-tight tracking-tight text-foreground md:text-3xl lg:text-4xl">
+                  {relatedPublication.title}
+                </h2>
+                {relatedPublication.subtitle ? (
+                  <p className="mt-3 font-body text-base text-muted-foreground md:text-lg">
+                    {relatedPublication.subtitle}
+                  </p>
+                ) : null}
+                <p className="mt-4 max-w-xl font-body text-sm leading-relaxed text-muted-foreground md:text-base">
+                  {relatedPublication.teaser}
+                </p>
+
+                <div className="mt-8 flex flex-wrap gap-3">
+                  <Button asChild>
+                    <Link to={relatedPublication.href}>Acessar publicação</Link>
+                  </Button>
+                  <Button variant="outline" asChild>
+                    <a
+                      href={relatedPublication.downloadUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Download className="size-4" aria-hidden="true" />
+                      {relatedPublication.downloadLabel}
+                    </a>
+                  </Button>
+                </div>
+              </div>
+            </article>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      <section className="section-padding bg-background" aria-label="Referências bibliográficas">
         <div className="container-app mx-auto max-w-4xl">
           <ScrollReveal>
             <h2 className="font-heading text-xl font-bold uppercase tracking-tight text-foreground md:text-2xl">
@@ -177,7 +212,7 @@ export function ProjetoCombinacaoPage() {
         </div>
       </section>
 
-      <section className="section-padding bg-background">
+      <section className="section-padding bg-muted">
         <div className="container-app mx-auto max-w-3xl border-t border-border pt-8">
           <Button variant="outline" asChild>
             <Link to="/">

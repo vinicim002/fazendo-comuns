@@ -13,9 +13,7 @@ export function CriancasFalamPage() {
     <>
       <PageHero
         title={heading}
-        subtitle={manifesto}
         breadcrumb={[{ label: 'Início', href: '/' }, { label: heading }]}
-        align="left"
       />
 
       <section className="section-padding bg-background" aria-label="Reportagem">
@@ -27,6 +25,8 @@ export function CriancasFalamPage() {
                   src={heroImage}
                   alt={heroImageAlt}
                   className="aspect-[4/5] w-full object-cover sm:aspect-[3/4] lg:aspect-[4/5]"
+                  loading="eager"
+                  decoding="async"
                 />
               </figure>
 
@@ -50,7 +50,7 @@ export function CriancasFalamPage() {
         className="section-padding bg-muted"
         aria-label="Voz das crianças sobre o recreio"
       >
-        <div className="container-app flex flex-col gap-14 lg:gap-20">
+        <div className="container-app mx-auto max-w-6xl flex flex-col gap-14 lg:gap-20">
           {sections.map((section, index) => (
             <CriancasFalamSection key={section.id} section={section} index={index} />
           ))}

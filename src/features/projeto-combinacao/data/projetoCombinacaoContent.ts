@@ -144,11 +144,24 @@ export const projetoCombinacaoContent = {
       'A convivência coletiva e o fazer junto.',
     ],
     outro:
-      'Os resultados do O Projeto CombinAção podem ser encontrados por no nosso site, convidamos você a visitar as demais seções para conhecê-los um pouco mais.',
+      'Os resultados do O Projeto CombinAção podem ser encontrados em nosso site; convidamos você a visitar as demais seções para conhecê-los um pouco mais.',
   },
   recreioImage: {
     url: wixImage('92a7cc_f2e18117bcd34f45a2067e803746a43b', 'jpeg', 676, 1200),
     alt: 'Cartaz: Recreio é tempo de ser feliz',
+  },
+  relatedPublication: {
+    slug: 'livretos-projeto-combinacao',
+    title: 'Livretos — Projeto CombinAção',
+    subtitle: 'Seis situações escolares para pesquisa com crianças',
+    cover: wixImage('92a7cc_7bbda1d1ea15437ea47386841d3e8e08', 'jpeg', 800, 450),
+    coverAlt: 'Capa dos livretos do Projeto CombinAção',
+    href: '/livros/livretos-projeto-combinacao',
+    teaser:
+      'Acesse o conjunto completo dos seis livretos para ler online ou baixar o PDF gratuitamente.',
+    downloadUrl:
+      'https://www.fazendocomuns.com.br/_files/ugd/92a7cc_740af723a5d749dabe080e2b1a34a88f.pdf',
+    downloadLabel: 'Baixar PDF',
   },
   pdf: {
     label: 'Livrinhos — PDF',

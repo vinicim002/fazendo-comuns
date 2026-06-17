@@ -33,7 +33,6 @@ export function NoticiaDetailPage() {
           { label: 'Notícias', href: '/noticias' },
           { label: noticia.title },
         ]}
-        align="left"
       />
 
       <article className="section-padding bg-background" aria-label={noticia.title}>

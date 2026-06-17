@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { ArrowLeft, Calendar, Camera, MapPin } from 'lucide-react'
+import { ArrowLeft, Calendar, Camera, Download, MapPin } from 'lucide-react'
 import { PageHero } from '@/components/layout/PageHero'
 import { ScrollReveal } from '@/components/shared/ScrollReveal'
 import { Button } from '@/components/ui/button'
@@ -10,10 +10,10 @@ export function RecrearMundosOutrosPage() {
   const {
     title,
     subtitle,
-    image,
-    imageAlt,
+    posters,
     date,
     location,
+    intro,
     videoSection,
     relatedBook,
   } = recrearMundosOutrosEvent
@@ -28,23 +28,23 @@ export function RecrearMundosOutrosPage() {
           { label: 'Eventos', href: '/eventos' },
           { label: title },
         ]}
-        align="left"
       />
 
       <section className="section-padding bg-background" aria-label="Sobre o evento">
-        <div className="container-app">
+        <div className="container-app mx-auto max-w-6xl">
           <ScrollReveal>
-            <div className="overflow-hidden rounded-2xl shadow-medium">
-              <img
-                src={image}
-                alt={imageAlt}
-                className="aspect-[21/9] w-full object-cover md:aspect-[2.5/1]"
-              />
+            <div className="space-y-5">
+              {intro.map((paragraph) => (
+                <p
+                  key={paragraph.slice(0, 48)}
+                  className="font-body text-base leading-relaxed text-justify text-foreground md:text-lg md:leading-loose"
+                >
+                  {paragraph}
+                </p>
+              ))}
             </div>
-          </ScrollReveal>
 
-          <ScrollReveal delay={0.1}>
-            <ul className="mt-8 flex flex-wrap gap-6">
+            <ul className="mt-8 flex flex-wrap gap-6 border-t border-border/60 pt-8">
               <li className="flex items-center gap-2 font-body text-sm text-muted-foreground md:text-base">
                 <Calendar className="size-4 shrink-0 text-brand-orange" aria-hidden="true" />
                 {date}
@@ -54,6 +54,25 @@ export function RecrearMundosOutrosPage() {
                 {location}
               </li>
             </ul>
+          </ScrollReveal>
+
+          <ScrollReveal delay={0.1}>
+            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:gap-10">
+              {posters.map((poster) => (
+                <figure
+                  key={poster.src}
+                  className="mx-auto w-full max-w-xs overflow-hidden rounded-2xl border border-border/60 bg-card shadow-medium sm:max-w-none"
+                >
+                  <img
+                    src={poster.src}
+                    alt={poster.alt}
+                    className="w-full object-contain"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+              ))}
+            </div>
           </ScrollReveal>
         </div>
       </section>
@@ -90,7 +109,7 @@ export function RecrearMundosOutrosPage() {
 
       <section
         className="section-padding bg-background"
-        aria-label="Livro relacionado ao evento"
+        aria-label="Livro lançado no evento"
       >
         <div className="container-app mx-auto max-w-6xl">
           <ScrollReveal>
@@ -105,25 +124,28 @@ export function RecrearMundosOutrosPage() {
                 />
               </div>
 
-              <div className="flex min-w-0 flex-col items-start">
-                <p className="font-ui text-sm font-semibold uppercase tracking-widest text-brand-red">
-                  Livro relacionado
-                </p>
-                <h2 className="mt-3 font-heading text-2xl font-bold leading-tight tracking-tight text-foreground md:text-3xl lg:text-4xl">
+              <div className="flex min-w-0 flex-col items-center text-center lg:items-start lg:text-left">
+                <h2 className="font-heading text-2xl font-bold leading-tight tracking-tight text-foreground md:text-3xl lg:text-4xl">
                   {relatedBook.title}
+                  <br />
+                  <span className="font-normal">{relatedBook.titleLine2}</span>
                 </h2>
-                {relatedBook.subtitle ? (
-                  <p className="mt-3 font-body text-base text-muted-foreground md:text-lg">
-                    {relatedBook.subtitle}
-                  </p>
-                ) : null}
-                <p className="mt-4 max-w-xl font-body text-sm leading-relaxed text-muted-foreground md:text-base">
-                  {relatedBook.teaser}
-                </p>
 
-                <Button className="mt-8" asChild>
-                  <Link to={relatedBook.href}>Acessar página do livro</Link>
-                </Button>
+                <div className="mt-8 flex flex-wrap items-center justify-center gap-3 lg:justify-start">
+                  <Button asChild>
+                    <a
+                      href={relatedBook.downloadUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Download className="size-4" aria-hidden="true" />
+                      {relatedBook.downloadLabel}
+                    </a>
+                  </Button>
+                  <Button variant="outline" asChild>
+                    <Link to={relatedBook.href}>Ler na página do livro</Link>
+                  </Button>
+                </div>
               </div>
             </article>
           </ScrollReveal>

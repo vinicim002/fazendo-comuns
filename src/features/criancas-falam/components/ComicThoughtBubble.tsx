@@ -13,6 +13,7 @@ interface ComicThoughtBubbleProps {
   quote: string
   tail?: BubbleTail
   size?: 'sm' | 'md' | 'lg'
+  align?: 'center' | 'left'
   className?: string
 }
 
@@ -26,6 +27,7 @@ export function ComicThoughtBubble({
   quote,
   tail = 'bottom-left',
   size = 'md',
+  align = 'center',
   className,
 }: ComicThoughtBubbleProps) {
   return (
@@ -37,7 +39,13 @@ export function ComicThoughtBubble({
           size === 'lg' ? 'px-6 py-5' : size === 'sm' ? 'px-4 py-3' : 'px-5 py-4',
         )}
       >
-        <p className="font-comic text-center leading-snug font-medium text-foreground">
+        <p
+          className={cn(
+            'font-comic font-medium text-foreground',
+            align === 'left' ? 'text-left leading-relaxed' : 'text-center leading-snug',
+            size === 'lg' && align === 'left' && 'leading-loose',
+          )}
+        >
           &ldquo;{quote}&rdquo;
         </p>
       </div>

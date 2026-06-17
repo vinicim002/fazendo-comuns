@@ -18,7 +18,6 @@ export function BibliografiaPage() {
           { label: 'O projeto', href: '/projeto' },
           { label: title },
         ]}
-        align="left"
       />
 
       <section className="section-padding bg-background" aria-label="Bibliografia da pesquisa">

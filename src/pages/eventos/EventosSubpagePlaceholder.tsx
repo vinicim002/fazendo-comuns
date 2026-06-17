@@ -27,7 +27,6 @@ export function EventosSubpagePlaceholder({
           { label: parentLabel, href: parentHref },
           { label: title },
         ]}
-        align="left"
       />
 
       <div className="container-app flex min-h-[40vh] flex-col items-center justify-center py-20 text-center">

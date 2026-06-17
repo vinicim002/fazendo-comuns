@@ -17,7 +17,6 @@ export function CartazesHistoriasPage() {
           { label: 'Histórias do recreio', href: '/historias-do-recreio' },
           { label: cartazes.title },
         ]}
-        align="left"
       />
 
       <section className="section-padding bg-background" aria-label={cartazes.title}>

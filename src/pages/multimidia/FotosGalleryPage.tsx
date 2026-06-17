@@ -23,7 +23,6 @@ export function FotosGalleryPage() {
           { label: 'Fotos', href: '/multimidia/fotos' },
           { label: gallery.title },
         ]}
-        align="left"
       />
 
       <section className="section-padding bg-background" aria-label={gallery.title}>

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { ArrowLeft, ImageIcon } from 'lucide-react'
+import { ArrowLeft } from 'lucide-react'
 import { PageHero } from '@/components/layout/PageHero'
 import { ScrollReveal } from '@/components/shared/ScrollReveal'
 import { Button } from '@/components/ui/button'
@@ -7,13 +7,19 @@ import type { OQueESection } from '@/features/projeto/data/oQueEContent'
 import { oQueEContent } from '@/features/projeto/data/oQueEContent'
 import { cn } from '@/lib/utils'
 
+const paragraphClass =
+  'font-body text-base leading-relaxed text-justify text-foreground md:text-lg md:leading-loose'
+
+const paragraphClassSm =
+  'font-body text-sm leading-relaxed text-justify text-foreground md:text-base md:leading-loose'
+
 function renderParagraph(text: string, index: number) {
   const parts = text.split('(ver Produções)')
   if (parts.length === 1) {
     return (
       <p
         key={index}
-        className="font-body text-base leading-relaxed text-foreground md:text-lg md:leading-loose"
+        className={paragraphClass}
       >
         {text}
       </p>
@@ -23,7 +29,7 @@ function renderParagraph(text: string, index: number) {
   return (
     <p
       key={index}
-      className="font-body text-base leading-relaxed text-foreground md:text-lg md:leading-loose"
+      className={paragraphClass}
     >
       {parts[0]}
       (
@@ -39,15 +45,36 @@ function renderParagraph(text: string, index: number) {
   )
 }
 
-function SectionImage({ section }: { section: OQueESection }) {
-  if (section.image) {
-    const isLogos = section.id === 'qualificacao'
+function SectionHeading({ id, children }: { id: string; children: string }) {
+  return (
+    <div className="mb-8 flex items-start gap-4 md:mb-10">
+      <div
+        className="mt-2 h-10 w-1 shrink-0 rounded-full bg-brand-red md:mt-2.5 md:h-12"
+        aria-hidden="true"
+      />
+      <h2
+        id={id}
+        className="font-heading text-2xl font-bold uppercase tracking-tight text-foreground md:text-3xl lg:text-4xl"
+      >
+        {children}
+      </h2>
+    </div>
+  )
+}
 
-    return (
-      <figure
+function SectionImage({ section }: { section: OQueESection }) {
+  if (!section.image) return null
+
+  const isLogos = section.id === 'qualificacao'
+
+  return (
+    <figure className="group">
+      <div
         className={cn(
-          'overflow-hidden rounded-2xl border border-border/60 shadow-soft',
-          isLogos ? 'bg-neutral-950 p-6 md:p-8' : 'bg-card',
+          'overflow-hidden rounded-2xl border shadow-medium transition-shadow duration-300 group-hover:shadow-strong',
+          isLogos
+            ? 'border-border/60 bg-muted p-5 md:p-6'
+            : 'border-border/60 bg-card',
         )}
       >
         <img
@@ -55,34 +82,76 @@ function SectionImage({ section }: { section: OQueESection }) {
           alt={section.image.alt}
           className={cn(
             'w-full object-contain',
-            isLogos ? 'mx-auto max-h-56 md:max-h-64' : 'aspect-[4/3] object-cover md:aspect-auto',
+            isLogos ? 'mx-auto max-h-48 md:max-h-56' : 'aspect-[2/1]',
           )}
+          loading="lazy"
+          decoding="async"
         />
-      </figure>
-    )
-  }
-
-  if (section.imagePlaceholder) {
-    return (
-      <figure className="flex min-h-[220px] flex-col items-center justify-center gap-4 rounded-2xl border border-dashed border-brand-amber/50 bg-brand-amber/5 px-6 py-10 text-center md:min-h-[280px]">
-        <div className="flex h-14 w-14 items-center justify-center rounded-full bg-brand-amber/20 text-brand-orange">
-          <ImageIcon className="size-7" aria-hidden="true" />
-        </div>
-        <figcaption>
-          <p className="font-ui text-xs font-semibold uppercase tracking-widest text-brand-orange">
-            {section.imagePlaceholder.label}
-          </p>
-          {section.imagePlaceholder.description && (
-            <p className="mt-2 font-body text-sm text-muted-foreground md:text-base">
-              {section.imagePlaceholder.description}
-            </p>
-          )}
+      </div>
+      {section.image.caption ? (
+        <figcaption className="mt-3 font-ui text-xs text-muted-foreground md:text-sm">
+          {section.image.caption}
         </figcaption>
-      </figure>
+      ) : null}
+    </figure>
+  )
+}
+
+function SectionBody({ section }: { section: OQueESection }) {
+  const highlightIndex = section.highlightParagraphIndex
+  const isQualificacao = section.id === 'qualificacao'
+
+  if (isQualificacao) {
+    return (
+      <ul className="space-y-3">
+        {section.paragraphs.map((paragraph, index) => (
+          <li
+            key={index}
+            className="rounded-xl border border-border/60 bg-card/80 px-5 py-4 shadow-soft md:px-6"
+          >
+            <p className={paragraphClassSm}>
+              {paragraph}
+            </p>
+          </li>
+        ))}
+      </ul>
     )
   }
 
-  return null
+  return (
+    <div className="space-y-6">
+      {section.paragraphs.map((paragraph, index) => {
+        const isHighlight = highlightIndex === index
+
+        if (isHighlight) {
+          return (
+            <blockquote
+              key={index}
+              className="relative rounded-2xl border border-brand-amber/40 bg-brand-amber/10 px-6 py-5 shadow-soft md:px-8 md:py-6"
+            >
+              <div
+                className="absolute top-0 left-0 h-full w-1 rounded-l-2xl bg-brand-amber"
+                aria-hidden="true"
+              />
+              <p className={paragraphClass}>
+                {paragraph}
+              </p>
+            </blockquote>
+          )
+        }
+
+        return renderParagraph(paragraph, index)
+      })}
+
+      {section.id === 'historico' ? (
+        <div className="pt-2">
+          <Button variant="outline" size="sm" className="rounded-full" asChild>
+            <Link to="/o-projeto-falatorio">Conhecer o Projeto CombinAção</Link>
+          </Button>
+        </div>
+      ) : null}
+    </div>
+  )
 }
 
 export function OQueEPage() {
@@ -98,12 +167,12 @@ export function OQueEPage() {
           { label: 'O projeto', href: '/projeto' },
           { label: title },
         ]}
-        align="left"
       />
 
       {sections.map((section, sectionIndex) => {
-        const hasVisual = Boolean(section.image ?? section.imagePlaceholder)
-        const imageFirst = section.id === 'historico'
+        const hasVisual = Boolean(section.image)
+        const imageOnLeft = section.imagePosition === 'left'
+        const isQualificacao = section.id === 'qualificacao'
 
         return (
           <section
@@ -117,43 +186,52 @@ export function OQueEPage() {
             <div
               className={cn(
                 'container-app mx-auto',
-                hasVisual ? 'max-w-5xl' : 'max-w-3xl',
+                hasVisual ? 'max-w-6xl' : 'max-w-3xl',
               )}
             >
               <ScrollReveal delay={sectionIndex * 0.05}>
-                {section.title && (
-                  <h2
-                    id={`${section.id}-title`}
-                    className="font-heading text-2xl font-bold uppercase tracking-tight text-foreground md:text-3xl"
-                  >
-                    {section.title}
-                  </h2>
-                )}
+                {section.title ? (
+                  <SectionHeading id={`${section.id}-title`}>{section.title}</SectionHeading>
+                ) : null}
 
-                <div
-                  className={cn(
-                    hasVisual &&
-                      'mt-8 grid gap-8 lg:grid-cols-2 lg:items-start lg:gap-10',
-                    !hasVisual && section.title && 'mt-8',
-                  )}
-                >
-                  <div
-                    className={cn(
-                      'space-y-6',
-                      hasVisual && imageFirst && 'lg:order-2',
-                    )}
-                  >
-                    {section.paragraphs.map((paragraph, index) =>
-                      renderParagraph(paragraph, index),
-                    )}
-                  </div>
-
-                  {hasVisual && (
-                    <div className={cn(imageFirst && 'lg:order-1')}>
+                {isQualificacao ? (
+                  <div className="grid gap-10 lg:grid-cols-2 lg:items-start lg:gap-12">
+                    <SectionBody section={section} />
+                    <div className="lg:sticky lg:top-28">
                       <SectionImage section={section} />
                     </div>
-                  )}
-                </div>
+                  </div>
+                ) : hasVisual ? (
+                  <div
+                    className={cn(
+                      'grid gap-10 lg:grid-cols-2 lg:items-start lg:gap-12',
+                      section.title && 'mt-0',
+                    )}
+                  >
+                    <div
+                      className={cn(
+                        imageOnLeft && 'lg:order-1',
+                        !imageOnLeft && 'lg:order-2',
+                      )}
+                    >
+                      <SectionBody section={section} />
+                    </div>
+
+                    <div
+                      className={cn(
+                        'lg:sticky lg:top-28',
+                        imageOnLeft && 'lg:order-2',
+                        !imageOnLeft && 'lg:order-1',
+                      )}
+                    >
+                      <SectionImage section={section} />
+                    </div>
+                  </div>
+                ) : (
+                  <div className={cn(section.title && 'mt-0')}>
+                    <SectionBody section={section} />
+                  </div>
+                )}
               </ScrollReveal>
             </div>
           </section>

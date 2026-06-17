@@ -1,9 +1,7 @@
-import cartazFazendoComunsImg from '@/assets/imgs/cartazFazendoComuns.jfif'
-import logosImg from '@/assets/imgs/logos.png'
-
 export interface OQueEImage {
   src: string
   alt: string
+  caption?: string
 }
 
 export interface OQueESection {
@@ -11,10 +9,20 @@ export interface OQueESection {
   title?: string
   paragraphs: string[]
   image?: OQueEImage
-  imagePlaceholder?: {
-    label: string
-    description?: string
-  }
+  imagePosition?: 'left' | 'right'
+  highlightParagraphIndex?: number
+}
+
+const wixBase = 'https://static.wixstatic.com/media'
+
+function wixImage(
+  fileId: string,
+  ext: 'png' | 'jpeg' | 'jpg',
+  width: number,
+  height: number,
+) {
+  const file = `${fileId}~mv2.${ext}`
+  return `${wixBase}/${file}/v1/fill/w_${width},h_${height},al_c,q_85,usm_0.66_1.00_0.01/${file}`
 }
 
 export const oQueEContent = {
@@ -24,10 +32,13 @@ export const oQueEContent = {
   sections: [
     {
       id: 'introducao',
+      imagePosition: 'right',
       image: {
-        src: cartazFazendoComunsImg,
+        src: wixImage('92a7cc_03dbde20c3614298be97ae63a92a5075', 'png', 1200, 600),
         alt: 'Estudante segurando cartaz ilustrado do projeto Fazendo Comuns na escola',
+        caption: 'Cartaz produzido no âmbito do projeto nas escolas parceiras.',
       },
+      highlightParagraphIndex: 2,
       paragraphs: [
         'Este é um projeto de pesquisa e intervenção social que investiga como ‘comuns’ são produzidos nas trocas entre os indivíduos nos lugares e espaços em que habitam e convivem. A noção de comuns aqui significa, utilizando a inspiração de autores como Gustavo Esteva e Massimo de Angelis, um conjunto de ações e valores que são estabelecidos pela ação, afetos e a experiência coletiva de um grupo social. Os comuns não são recursos que se usam, mas formas coletivas de abraçar, preservar e lutar pelo que é importante na vida com os outros.',
         'Estamos investigando os comuns na escola. E nestas investigações, as crianças e os adolescentes têm nos mostrado que o espaço escolar, valorizado por eles, mas que também é frequentemente sentido como uma prisão, deixa a desejar em muitos aspectos. Um deles é a falta do recreio escolar, e de um espaço apropriado para o recreio. De várias maneiras, e de forma orgânica, consistente e convincente, os estudantes têm apontado como a inexistência do recreio, ou sua duração diminuta, e outras tantas dificuldades impedem seus momentos de brincadeiras, conversas e liberdade dentro da escola.',
@@ -38,10 +49,11 @@ export const oQueEContent = {
     {
       id: 'historico',
       title: 'Histórico do projeto',
-      imagePlaceholder: {
-        label: 'Projeto Combinação',
-        description:
-          'Imagem dos materiais do Projeto Combinação — em breve.',
+      imagePosition: 'left',
+      image: {
+        src: wixImage('92a7cc_f89609480d1b41ea997eec2664bda3c0', 'png', 1200, 600),
+        alt: 'Materiais e registros do Projeto Combinação com crianças em escola pública',
+        caption: 'Registro de atividades do Projeto Combinação nas escolas municipais.',
       },
       paragraphs: [
         'Este projeto de pesquisa e intervenção social é resultado de um acúmulo de pesquisas anteriores sobre a participação social e política de crianças e jovens. Essas pesquisas têm sido divulgadas sob a forma de artigos, capítulos de livros e livros (ver Produções). Ele também é resultado das interações acadêmicas e científicas da coordenadora do projeto com outros grupos nacionais e internacionais que pesquisam a construção da subjetividade da criança e suas experiências nos seus diversos contextos sociais, culturais e políticos. Um desses grupos – ao qual se vinculam a coordenadora e os consultores do presente projeto – é o NIAJ/UFRJ, Núcleo de Estudos da Infância, Adolescência e Juventude da Universidade Federal do Rio de Janeiro.',
@@ -52,8 +64,9 @@ export const oQueEContent = {
     {
       id: 'qualificacao',
       title: 'Qualificação e credenciamento do projeto',
+      imagePosition: 'right',
       image: {
-        src: logosImg,
+        src: wixImage('92a7cc_80d9fd8cce1c42678811f1b19b959797', 'png', 1200, 662),
         alt: 'Logos de apoio e realização: FAPERJ, CNPq e Prefeitura do Rio — Educação',
       },
       paragraphs: [

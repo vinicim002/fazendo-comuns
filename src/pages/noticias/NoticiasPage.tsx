@@ -13,7 +13,6 @@ export function NoticiasPage() {
         title={title}
         subtitle={subtitle}
         breadcrumb={[{ label: 'Início', href: '/' }, { label: title }]}
-        align="left"
       />
 
       <section className="section-padding bg-background" aria-label="Lista de notícias">

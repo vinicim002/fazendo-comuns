@@ -19,7 +19,6 @@ export function LivrosCapitulosPage() {
           { label: 'Produções', href: '/projeto/producoes' },
           { label: title },
         ]}
-        align="left"
       />
 
       <section

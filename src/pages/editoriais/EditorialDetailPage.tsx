@@ -28,7 +28,6 @@ export function EditorialDetailPage() {
           { label: 'Editoriais', href: '/editoriais' },
           { label: editorial.title },
         ]}
-        align="left"
       />
 
       <article className="section-padding bg-background">

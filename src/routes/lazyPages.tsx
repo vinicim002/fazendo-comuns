@@ -16,6 +16,16 @@ export const ProfessoresFalamPage = lazy(() =>
     default: m.ProfessoresFalamPage,
   })),
 )
+export const ManifestoDasProfessorasPage = lazy(() =>
+  import('@/pages/ManifestoDasProfessorasPage').then((m) => ({
+    default: m.ManifestoDasProfessorasPage,
+  })),
+)
+export const SociedadeFalamPage = lazy(() =>
+  import('@/pages/SociedadeFalamPage').then((m) => ({
+    default: m.SociedadeFalamPage,
+  })),
+)
 export const HistoriasDoRecreioPage = lazy(() =>
   import('@/pages/HistoriasDoRecreioPage').then((m) => ({
     default: m.HistoriasDoRecreioPage,

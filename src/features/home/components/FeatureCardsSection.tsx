@@ -60,6 +60,31 @@ export function FeatureCardsSection() {
                       <ArrowUpRight className="size-3.5" aria-hidden="true" />
                     </Link>
                   </Button>
+
+                  {'secondaryLink' in card && card.secondaryLink ? (
+                    <div className="mt-6 flex w-full flex-col items-center gap-3 border-t border-border/60 pt-6">
+                      <div
+                        className={cn(
+                          'inline-flex max-w-full items-center justify-center rounded-full px-6 py-3 shadow-soft',
+                          bubbleTextColors[card.color],
+                        )}
+                      >
+                        <p className="font-heading text-base font-bold leading-snug md:text-lg">
+                          {card.secondaryLink.label}
+                        </p>
+                      </div>
+                      <Button
+                        variant="outline"
+                        className="transition-all group-hover:border-brand-red group-hover:bg-brand-red group-hover:text-white"
+                        asChild
+                      >
+                        <Link to={card.secondaryLink.href}>
+                          Leia mais
+                          <ArrowUpRight className="size-3.5" aria-hidden="true" />
+                        </Link>
+                      </Button>
+                    </div>
+                  ) : null}
                 </div>
               </motion.article>
             </ScrollReveal>

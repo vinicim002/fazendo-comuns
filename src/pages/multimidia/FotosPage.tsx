@@ -19,7 +19,6 @@ export function FotosPage() {
           { label: 'Multimídia', href: '/multimidia' },
           { label: title },
         ]}
-        align="left"
       />
 
       <section className="section-padding bg-background" aria-label="Galerias de fotos">

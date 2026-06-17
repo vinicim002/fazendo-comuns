@@ -7,7 +7,7 @@ import { EventPanelSection } from '@/features/eventos/components/EventPanelSecti
 import { asCriancasFalamEvent } from '@/features/eventos/data/asCriancasFalamContent'
 
 export function AsCriancasFalamPage() {
-  const { title, subtitle, image, imageAlt, date, location, panels } =
+  const { title, subtitle, image, imageAlt, date, location, intro, panels } =
     asCriancasFalamEvent
 
   return (
@@ -20,32 +20,46 @@ export function AsCriancasFalamPage() {
           { label: 'Eventos', href: '/eventos' },
           { label: title },
         ]}
-        align="left"
       />
 
       <section className="section-padding bg-background" aria-label="Sobre o evento">
-        <div className="container-app">
+        <div className="container-app mx-auto max-w-6xl">
           <ScrollReveal>
-            <div className="overflow-hidden rounded-2xl shadow-medium">
-              <img
-                src={image}
-                alt={imageAlt}
-                className="aspect-[21/9] w-full object-cover md:aspect-[2.5/1]"
-              />
-            </div>
-          </ScrollReveal>
+            <article className="grid gap-10 lg:grid-cols-[minmax(220px,320px)_1fr] lg:items-start lg:gap-12">
+              <figure className="mx-auto w-full max-w-xs overflow-hidden rounded-2xl border border-border/60 bg-card shadow-medium lg:mx-0 lg:max-w-none">
+                <img
+                  src={image}
+                  alt={imageAlt}
+                  className="w-full object-contain"
+                  loading="eager"
+                  decoding="async"
+                />
+              </figure>
 
-          <ScrollReveal delay={0.1}>
-            <ul className="mt-8 flex flex-wrap gap-6">
-              <li className="flex items-center gap-2 font-body text-sm text-muted-foreground md:text-base">
-                <Calendar className="size-4 shrink-0 text-brand-orange" aria-hidden="true" />
-                {date}
-              </li>
-              <li className="flex items-start gap-2 font-body text-sm text-muted-foreground md:text-base">
-                <MapPin className="mt-0.5 size-4 shrink-0 text-brand-red" aria-hidden="true" />
-                {location}
-              </li>
-            </ul>
+              <div className="min-w-0">
+                <div className="space-y-5">
+                  {intro.map((paragraph) => (
+                    <p
+                      key={paragraph}
+                      className="font-body text-base leading-relaxed text-justify text-foreground md:text-lg md:leading-loose"
+                    >
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
+
+                <ul className="mt-8 flex flex-wrap gap-6 border-t border-border/60 pt-8">
+                  <li className="flex items-center gap-2 font-body text-sm text-muted-foreground md:text-base">
+                    <Calendar className="size-4 shrink-0 text-brand-orange" aria-hidden="true" />
+                    {date}
+                  </li>
+                  <li className="flex items-start gap-2 font-body text-sm text-muted-foreground md:text-base">
+                    <MapPin className="mt-0.5 size-4 shrink-0 text-brand-red" aria-hidden="true" />
+                    {location}
+                  </li>
+                </ul>
+              </div>
+            </article>
           </ScrollReveal>
         </div>
       </section>
@@ -59,7 +73,7 @@ export function AsCriancasFalamPage() {
             <h2 className="font-heading text-2xl font-bold text-foreground md:text-3xl">
               Mesas e painéis
             </h2>
-            <p className="mt-3 max-w-2xl font-body text-muted-foreground md:text-lg">
+            <p className="mt-3 max-w-2xl font-body text-justify text-muted-foreground md:text-lg">
               O evento foi organizado em uma mesa de abertura e três painéis que
               articulam teoria, mobilização estudantil e a construção co-geracional
               do cotidiano escolar.

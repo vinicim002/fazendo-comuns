@@ -12,7 +12,15 @@ import combinacaoImg from '@/assets/imgs/combinacao.png'
 import jornalzinhoImg from '@/assets/imgs/img-jornalziho-db.png'
 import asCriancasFalamImg from '@/assets/imgs/asCriancasFalam.jpg'
 import asProfessorasFalamImg from '@/assets/imgs/asProfessorasEProfessoresFalam.jpg'
-import sociedadeFalaImg from '@/assets/imgs/sociedadefala.png'
+import {
+  asCriancasFalamEvent,
+  asCriancasFalamHeroImage,
+} from '@/features/eventos/data/asCriancasFalamContent'
+import {
+  recrearMundosOutrosEvent,
+  recrearMundosOutrosPoster1,
+} from '@/features/eventos/data/recrearMundosOutrosContent'
+import { sociedadeFalamHeroImage } from '@/features/sociedade-falam/data/sociedadeFalamContent'
 
 export const mainNavigation: NavItem[] = [
   { label: 'Página inicial', href: '/' },
@@ -77,7 +85,7 @@ export const carouselSlides = [
   },
   {
     id: '3',
-    src: asCriancasFalamImg,
+    src: asCriancasFalamHeroImage,
     alt: 'Crianças participando do evento As Crianças Falam',
     caption: 'A voz das crianças sobre o recreio',
   },
@@ -152,21 +160,21 @@ export const newsItems = newsItemsForHome
 export const eventItems = [
   {
     id: 'criancas-falam',
-    title: 'As Crianças Falam',
-    date: '2023 — 2024',
-    location: 'Escolas públicas municipais — Rio de Janeiro',
+    title: 'As Crianças Falam?',
+    date: asCriancasFalamEvent.date,
+    location: asCriancasFalamEvent.location,
     href: '/eventos/as-criancas-falam',
-    image: asCriancasFalamImg,
-    imageAlt: 'Evento As Crianças Falam',
+    image: asCriancasFalamHeroImage,
+    imageAlt: asCriancasFalamEvent.imageAlt,
   },
   {
     id: 'recrear-mundos',
     title: 'Em Comuns…Recrear em mundos outros',
-    date: '2023 — 2024',
-    location: 'Espaços culturais e escolares parceiros',
+    date: recrearMundosOutrosEvent.date,
+    location: recrearMundosOutrosEvent.location,
     href: '/eventos/recrear-mundos-outros',
-    image: asProfessorasFalamImg,
-    imageAlt: 'Evento Em Comuns…Recrear em mundos outros',
+    image: recrearMundosOutrosPoster1,
+    imageAlt: recrearMundosOutrosEvent.posters[0].alt,
   },
 ]
 
@@ -186,13 +194,17 @@ export const featureCards = [
     color: 'yellow' as const,
     image: asProfessorasFalamImg,
     imageAlt: 'As professoras e os professores falam',
+    secondaryLink: {
+      label: 'Manifesto das professoras',
+      href: '/manifesto-das-professoras',
+    },
   },
   {
     id: 'sociedade',
     title: 'A sociedade fala',
-    href: '/eventos',
+    href: '/a-sociedade-fala',
     color: 'orange' as const,
-    image: sociedadeFalaImg,
-    imageAlt: 'A sociedade fala sobre o recreio',
+    image: sociedadeFalamHeroImage,
+    imageAlt: 'A sociedade fala sobre o recreio e a brincadeira',
   },
 ]

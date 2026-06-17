@@ -3,11 +3,11 @@ import { ArrowLeft } from 'lucide-react'
 import { PageHero } from '@/components/layout/PageHero'
 import { ScrollReveal } from '@/components/shared/ScrollReveal'
 import { Button } from '@/components/ui/button'
-import { ProfessoresFalamSectionCard } from '@/features/professores-falam/components/ProfessoresFalamSectionCard'
-import { professoresFalamContent } from '@/features/professores-falam/data/professoresFalamContent'
+import { SociedadeFalamEntryCard } from '@/features/sociedade-falam/components/SociedadeFalamEntryCard'
+import { sociedadeFalamContent } from '@/features/sociedade-falam/data/sociedadeFalamContent'
 
-export function ProfessoresFalamPage() {
-  const { heading, subtitle, heroImage, heroImageAlt, sections } = professoresFalamContent
+export function SociedadeFalamPage() {
+  const { heading, subtitle, heroImage, heroImageAlt, entries } = sociedadeFalamContent
 
   return (
     <>
@@ -17,7 +17,7 @@ export function ProfessoresFalamPage() {
         breadcrumb={[{ label: 'Início', href: '/' }, { label: heading }]}
       />
 
-      <section className="section-padding bg-background" aria-label="Reportagem">
+      <section className="section-padding bg-background" aria-label="Imagem de abertura">
         <div className="container-app">
           <ScrollReveal>
             <div className="overflow-hidden rounded-2xl shadow-medium">
@@ -25,6 +25,8 @@ export function ProfessoresFalamPage() {
                 src={heroImage}
                 alt={heroImageAlt}
                 className="aspect-[21/9] w-full object-cover md:aspect-[2.5/1]"
+                loading="eager"
+                decoding="async"
               />
             </div>
           </ScrollReveal>
@@ -33,15 +35,11 @@ export function ProfessoresFalamPage() {
 
       <section
         className="section-padding bg-muted"
-        aria-label="Depoimentos de professoras e professores"
+        aria-label="Citações sobre recreio e brincadeira"
       >
-        <div className="container-app mx-auto max-w-6xl flex flex-col gap-14 lg:gap-20">
-          {sections.map((section, index) => (
-            <ProfessoresFalamSectionCard
-              key={section.id}
-              section={section}
-              index={index}
-            />
+        <div className="container-app mx-auto max-w-4xl flex flex-col gap-8 lg:gap-10">
+          {entries.map((entry, index) => (
+            <SociedadeFalamEntryCard key={entry.id} entry={entry} index={index} />
           ))}
         </div>
       </section>

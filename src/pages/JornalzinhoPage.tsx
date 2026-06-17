@@ -14,7 +14,6 @@ export function JornalzinhoPage() {
         title={heading}
         subtitle={subtitle}
         breadcrumb={[{ label: 'Início', href: '/' }, { label: heading }]}
-        align="left"
       />
 
       <section className="section-padding bg-background" aria-labelledby="sobre-jornalzinho">
