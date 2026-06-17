@@ -80,7 +80,7 @@ export function ProfessoresFalamSectionCard({
               src={section.image}
               alt={section.imageAlt}
               loading="lazy"
-              className="h-full w-full object-contain bg-neutral-50 p-4 md:p-6"
+              className="h-full w-full object-contain bg-muted p-4 md:p-6"
             />
           </figure>
         </div>

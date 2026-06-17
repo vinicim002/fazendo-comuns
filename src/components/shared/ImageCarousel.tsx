@@ -60,7 +60,7 @@ export function ImageCarousel({
     >
       <div
         className={cn(
-          'relative w-full overflow-hidden bg-neutral-200',
+          'relative w-full overflow-hidden bg-muted',
           fullWidth
             ? 'aspect-[16/9] shadow-none md:aspect-[21/8]'
             : 'aspect-[21/9] rounded-2xl shadow-medium md:aspect-[21/8] md:rounded-3xl',
@@ -93,7 +93,7 @@ export function ImageCarousel({
             <button
               type="button"
               onClick={prev}
-              className="absolute top-1/2 left-4 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-neutral-800 shadow-soft transition-all hover:scale-105 hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-red md:left-8 md:h-12 md:w-12"
+              className="absolute top-1/2 left-4 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-card/90 text-foreground shadow-soft transition-all hover:scale-105 hover:bg-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-red md:left-8 md:h-12 md:w-12"
               aria-label="Imagem anterior"
             >
               <ChevronLeft className="size-5" />
@@ -101,7 +101,7 @@ export function ImageCarousel({
             <button
               type="button"
               onClick={next}
-              className="absolute top-1/2 right-4 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-neutral-800 shadow-soft transition-all hover:scale-105 hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-red md:right-8 md:h-12 md:w-12"
+              className="absolute top-1/2 right-4 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-card/90 text-foreground shadow-soft transition-all hover:scale-105 hover:bg-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-red md:right-8 md:h-12 md:w-12"
               aria-label="Próxima imagem"
             >
               <ChevronRight className="size-5" />
@@ -128,7 +128,7 @@ export function ImageCarousel({
                 'h-2 rounded-full transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-red',
                 index === current
                   ? 'w-8 bg-brand-red'
-                  : 'w-2 bg-neutral-300 hover:bg-brand-amber',
+                  : 'w-2 bg-border hover:bg-brand-amber',
               )}
             />
           ))}

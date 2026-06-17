@@ -10,7 +10,7 @@ export function TeamMemberCard({ member, featured = false }: TeamMemberCardProps
     return (
       <article className="overflow-hidden rounded-2xl border border-border/60 bg-card shadow-soft">
         <div className="grid gap-0 lg:grid-cols-[minmax(240px,320px)_1fr]">
-          <div className="relative aspect-[3/4] overflow-hidden bg-neutral-100 lg:aspect-auto lg:min-h-full">
+          <div className="relative aspect-[3/4] overflow-hidden bg-muted lg:aspect-auto lg:min-h-full">
             <img
               src={member.image}
               alt={member.name}
@@ -37,7 +37,7 @@ export function TeamMemberCard({ member, featured = false }: TeamMemberCardProps
 
   return (
     <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-border/60 bg-card shadow-soft transition-all hover:-translate-y-1 hover:shadow-medium">
-      <div className="relative aspect-[4/5] overflow-hidden bg-neutral-100">
+      <div className="relative aspect-[4/5] overflow-hidden bg-muted">
         <img
           src={member.image}
           alt={member.name}

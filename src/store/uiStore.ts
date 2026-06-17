@@ -24,10 +24,10 @@ function getInitialTheme(): ThemeMode {
       }
     }
   } catch {
-    // preferência inválida — usa fallback do sistema
+    // preferência inválida — usa claro
   }
 
-  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+  return 'light'
 }
 
 export const useUIStore = create<UIState>()(

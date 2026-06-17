@@ -4,7 +4,7 @@ import { FooterBrandSection } from '@/components/layout/FooterBrandSection'
 import { FooterPartners } from '@/components/layout/FooterPartners'
 
 const footerSurfaceClass =
-  'border-t border-brand-orange/30 bg-brand-amber text-neutral-900'
+  'border-t border-brand-orange/30 bg-brand-amber text-neutral-900 dark:border-border dark:bg-card dark:text-card-foreground'
 
 interface SiteFooterProps {
   variant?: 'home' | 'default'
@@ -27,10 +27,10 @@ export function SiteFooter({
       <Separator className="my-8 bg-brand-orange/30 lg:my-10" />
 
       <div className="flex flex-col items-center justify-between gap-3 text-center sm:flex-row sm:text-left">
-        <p className="font-ui text-sm text-neutral-700">
+        <p className="font-ui text-sm text-neutral-700 dark:text-muted-foreground">
           © {currentYear} Fazendo Comuns. Todos os direitos reservados.
         </p>
-        <p className="font-ui text-xs text-neutral-600">
+        <p className="font-ui text-xs text-neutral-600 dark:text-muted-foreground">
           Projeto de pesquisa — UFRJ · Psicologia
         </p>
       </div>

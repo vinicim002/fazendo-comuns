@@ -32,12 +32,12 @@ export function ComicThoughtBubble({
     <div className={cn('relative inline-block', sizeClass[size], className)}>
       <div
         className={cn(
-          'relative rounded-[1.75rem] border-[3px] border-neutral-900 bg-white',
-          'shadow-[5px_5px_0_0_#1a1612]',
+          'relative rounded-[1.75rem] border-[3px] border-neutral-900 bg-card dark:border-border',
+          'shadow-[5px_5px_0_0_#1a1612] dark:shadow-[5px_5px_0_0_var(--border)]',
           size === 'lg' ? 'px-6 py-5' : size === 'sm' ? 'px-4 py-3' : 'px-5 py-4',
         )}
       >
-        <p className="font-comic text-center leading-snug font-medium text-neutral-900">
+        <p className="font-comic text-center leading-snug font-medium text-foreground">
           &ldquo;{quote}&rdquo;
         </p>
       </div>
@@ -46,9 +46,9 @@ export function ComicThoughtBubble({
         className={cn('absolute flex items-center gap-1.5', tailPositionClass[tail])}
         aria-hidden="true"
       >
-        <span className="size-3.5 rounded-full border-2 border-neutral-900 bg-white" />
-        <span className="size-2.5 rounded-full border-2 border-neutral-900 bg-white" />
-        <span className="size-1.5 rounded-full border-2 border-neutral-900 bg-white" />
+        <span className="size-3.5 rounded-full border-2 border-neutral-900 bg-card dark:border-border" />
+        <span className="size-2.5 rounded-full border-2 border-neutral-900 bg-card dark:border-border" />
+        <span className="size-1.5 rounded-full border-2 border-neutral-900 bg-card dark:border-border" />
       </div>
     </div>
   )

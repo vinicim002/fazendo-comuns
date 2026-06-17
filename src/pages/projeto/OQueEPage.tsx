@@ -110,7 +110,7 @@ export function OQueEPage() {
             key={section.id}
             className={cn(
               'section-padding',
-              sectionIndex % 2 === 0 ? 'bg-background' : 'bg-neutral-50',
+              sectionIndex % 2 === 0 ? 'bg-background' : 'bg-muted',
             )}
             aria-labelledby={section.title ? `${section.id}-title` : undefined}
           >

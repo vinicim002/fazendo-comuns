@@ -15,7 +15,7 @@ export function MainLayout() {
       {!isHome && <Header />}
       <main
         id="main-content"
-        className={cn('flex-1', !isHome && 'pt-16 md:pt-20')}
+        className={cn('flex-1 bg-background', !isHome && 'pt-16 md:pt-20')}
       >
         <Outlet />
       </main>

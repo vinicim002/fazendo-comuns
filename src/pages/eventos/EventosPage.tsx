@@ -29,7 +29,7 @@ export function EventosPage() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/50 to-transparent" />
                     <div className="absolute right-0 bottom-0 left-0 p-6">
-                      <span className="rounded-full bg-white/90 px-4 py-1.5 font-ui text-xs font-semibold uppercase tracking-wider text-neutral-800">
+                      <span className="rounded-full bg-card/90 px-4 py-1.5 font-ui text-xs font-semibold uppercase tracking-wider text-foreground">
                         Evento
                       </span>
                     </div>

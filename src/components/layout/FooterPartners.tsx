@@ -2,7 +2,7 @@ import { footerContent, type FooterPartnerLogo } from '@/features/home/data/foot
 import { cn } from '@/lib/utils'
 
 const headingClass =
-  'font-subheading text-sm font-semibold uppercase tracking-wider text-brand-red-dark'
+  'font-subheading text-sm font-semibold uppercase tracking-wider text-brand-red-dark dark:text-brand-orange'
 
 function PartnerLogoCell({
   partner,
@@ -14,7 +14,7 @@ function PartnerLogoCell({
   return (
     <div
       className={cn(
-        'flex h-20 items-center justify-center rounded-xl bg-white/55 px-4 py-3',
+        'flex h-20 items-center justify-center rounded-xl bg-muted/60 px-4 py-3',
         className ?? partner.cellClassName,
       )}
     >
@@ -33,7 +33,7 @@ export function FooterPartners() {
 
   return (
     <section
-      className="border-t border-brand-orange/25 pt-10 lg:pt-12"
+      className="border-t border-brand-orange/25 pt-10 dark:border-border lg:pt-12"
       aria-label="Realização e apoio"
     >
       <div className="grid gap-10 md:grid-cols-2 md:gap-12 lg:gap-16">

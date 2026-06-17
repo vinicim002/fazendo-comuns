@@ -41,7 +41,7 @@ export function JornalzinhoPage() {
       </section>
 
       <section
-        className="section-padding bg-neutral-50"
+        className="section-padding bg-muted"
         aria-label="Publicação do Jornalzinho"
       >
         <div className="container-app mx-auto max-w-6xl">

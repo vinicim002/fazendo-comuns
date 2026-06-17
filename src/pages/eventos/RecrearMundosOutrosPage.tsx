@@ -59,7 +59,7 @@ export function RecrearMundosOutrosPage() {
       </section>
 
       <section
-        className="section-padding bg-neutral-50"
+        className="section-padding bg-muted"
         aria-label="Vídeo sobre o projeto"
       >
         <div className="container-app mx-auto max-w-6xl">
@@ -130,7 +130,7 @@ export function RecrearMundosOutrosPage() {
         </div>
       </section>
 
-      <section className="section-padding bg-neutral-50" aria-label="Registro fotográfico">
+      <section className="section-padding bg-muted" aria-label="Registro fotográfico">
         <div className="container-app">
           <ScrollReveal>
             <div className="flex flex-col items-start justify-between gap-6 rounded-2xl border border-border/60 bg-card p-6 shadow-soft md:flex-row md:items-center md:p-8">

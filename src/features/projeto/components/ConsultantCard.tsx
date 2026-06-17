@@ -8,7 +8,7 @@ interface ConsultantCardProps {
 export function ConsultantCard({ consultant }: ConsultantCardProps) {
   return (
     <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-border/60 bg-card shadow-soft transition-all hover:-translate-y-1 hover:shadow-medium">
-      <div className="relative aspect-[4/5] overflow-hidden bg-neutral-100">
+      <div className="relative aspect-[4/5] overflow-hidden bg-muted">
         <img
           src={consultant.image}
           alt={consultant.name}
@@ -46,7 +46,7 @@ export function ConsultantCard({ consultant }: ConsultantCardProps) {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 rounded-full border border-border/60 bg-neutral-50 px-3 py-1.5 font-ui text-xs font-semibold text-foreground transition-colors hover:border-brand-red hover:text-brand-red"
+                  className="inline-flex items-center gap-1.5 rounded-full border border-border/60 bg-muted px-3 py-1.5 font-ui text-xs font-semibold text-foreground transition-colors hover:border-brand-red hover:text-brand-red"
                 >
                   {link.label}
                   <ExternalLink className="size-3" aria-hidden="true" />

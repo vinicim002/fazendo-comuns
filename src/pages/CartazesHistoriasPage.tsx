@@ -39,7 +39,7 @@ export function CartazesHistoriasPage() {
         </div>
       </section>
 
-      <section className="section-padding bg-neutral-50">
+      <section className="section-padding bg-muted">
         <div className="container-app border-t border-border pt-8">
           <Button variant="outline" asChild>
             <Link to="/historias-do-recreio">

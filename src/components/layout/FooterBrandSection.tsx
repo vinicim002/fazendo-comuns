@@ -6,7 +6,7 @@ import { footerContent } from '@/features/home/data/footerContent'
 import { mainNavigation } from '@/features/home/data/homeContent'
 
 const headingClass =
-  'font-subheading text-sm font-semibold uppercase tracking-wider text-brand-red-dark'
+  'font-subheading text-sm font-semibold uppercase tracking-wider text-brand-red-dark dark:text-brand-orange'
 
 interface FooterBrandSectionProps {
   logoSize?: 'md' | 'lg'
@@ -18,7 +18,7 @@ export function FooterBrandSection({ logoSize = 'md' }: FooterBrandSectionProps)
       <div className="grid gap-10 lg:grid-cols-12 lg:items-start lg:gap-8 xl:gap-10">
         <div className="lg:col-span-3">
           <Logo size={logoSize} />
-          <p className="mt-4 max-w-xs font-body text-sm leading-relaxed text-neutral-800">
+          <p className="mt-4 max-w-xs font-body text-sm leading-relaxed text-neutral-800 dark:text-muted-foreground">
             A escola como projeto intra e co-geracional. Pesquisa sobre recreio
             nas escolas públicas, coordenada pela UFRJ.
           </p>
@@ -31,7 +31,7 @@ export function FooterBrandSection({ logoSize = 'md' }: FooterBrandSectionProps)
               <li key={item.href}>
                 <Link
                   to={item.href}
-                  className="font-ui text-sm text-neutral-800 transition-colors hover:text-brand-red"
+                  className="font-ui text-sm text-neutral-800 transition-colors hover:text-brand-red dark:text-muted-foreground dark:hover:text-brand-orange"
                 >
                   {item.label}
                 </Link>
@@ -48,7 +48,7 @@ export function FooterBrandSection({ logoSize = 'md' }: FooterBrandSectionProps)
                 className="mt-0.5 size-4 shrink-0 text-brand-red"
                 aria-hidden="true"
               />
-              <address className="not-italic font-body text-sm leading-relaxed text-neutral-800">
+              <address className="not-italic font-body text-sm leading-relaxed text-neutral-800 dark:text-muted-foreground">
                 {footerContent.address.institution}
                 <br />
                 {footerContent.address.campus}
@@ -62,7 +62,7 @@ export function FooterBrandSection({ logoSize = 'md' }: FooterBrandSectionProps)
             <h3 className={headingClass}>E-mail</h3>
             <a
               href={`mailto:${footerContent.email}`}
-              className="mt-4 inline-flex items-start gap-2 font-ui text-sm text-neutral-800 transition-colors hover:text-brand-red"
+              className="mt-4 inline-flex items-start gap-2 font-ui text-sm text-neutral-800 transition-colors hover:text-brand-red dark:text-muted-foreground dark:hover:text-brand-orange"
             >
               <Mail className="mt-0.5 size-4 shrink-0 text-brand-red" aria-hidden="true" />
               <span className="break-all">{footerContent.email}</span>
@@ -81,7 +81,7 @@ export function FooterBrandSection({ logoSize = 'md' }: FooterBrandSectionProps)
               href={footerContent.instagram}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-4 inline-flex items-center gap-2 rounded-full border border-brand-red/20 bg-white/50 px-4 py-2 font-ui text-sm text-neutral-900 transition-colors hover:border-brand-red hover:bg-white"
+              className="mt-4 inline-flex items-center gap-2 rounded-full border border-brand-red/20 bg-muted/80 px-4 py-2 font-ui text-sm text-foreground transition-colors hover:border-brand-red hover:bg-muted dark:hover:border-brand-orange"
               aria-label="Instagram do Fazendo Comuns (abre em nova aba)"
             >
               <InstagramIcon />

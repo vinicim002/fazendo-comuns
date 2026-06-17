@@ -33,7 +33,7 @@ export function ProfessoresFalamPage() {
       </section>
 
       <section
-        className="section-padding bg-neutral-50"
+        className="section-padding bg-muted"
         aria-label="Depoimentos de professoras e professores"
       >
         <div className="container-app flex flex-col gap-12 lg:gap-16">

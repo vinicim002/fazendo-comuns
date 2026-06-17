@@ -23,7 +23,7 @@ export function LivroCard({ livro, index }: LivroCardProps) {
       <div className="flex min-w-0 flex-col sm:flex-row sm:items-stretch">
         <Link
           to={`/livros/${livro.slug}`}
-          className="relative mx-auto w-full max-w-[220px] shrink-0 overflow-hidden bg-neutral-100 sm:mx-0 sm:max-w-none sm:w-44 md:w-52"
+          className="relative mx-auto w-full max-w-[220px] shrink-0 overflow-hidden bg-muted sm:mx-0 sm:max-w-none sm:w-44 md:w-52"
           tabIndex={-1}
           aria-hidden="true"
         >

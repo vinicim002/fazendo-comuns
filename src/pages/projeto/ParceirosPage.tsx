@@ -27,7 +27,7 @@ export function ParceirosPage() {
           key={group.id}
           className={cn(
             'section-padding',
-            groupIndex % 2 === 0 ? 'bg-background' : 'bg-neutral-50',
+            groupIndex % 2 === 0 ? 'bg-background' : 'bg-muted',
           )}
           aria-labelledby={`${group.id}-title`}
         >

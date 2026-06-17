@@ -15,7 +15,7 @@ const bubbleRingColors = {
 
 export function BubblesSection() {
   return (
-    <section className="section-padding bg-neutral-50" aria-labelledby="bubbles-title">
+    <section className="section-padding bg-muted" aria-labelledby="bubbles-title">
       <div className="container-app">
         <ScrollReveal>
           <h2 id="bubbles-title" className="sr-only">
@@ -37,7 +37,7 @@ export function BubblesSection() {
                     whileHover={{ y: -8, scale: 1.06 }}
                     transition={{ type: 'spring', stiffness: 300, damping: 20 }}
                     className={cn(
-                      'relative aspect-square w-32 shrink-0 overflow-hidden rounded-full border-4 border-white bg-white shadow-medium ring-4 md:w-36 lg:w-40',
+                      'relative aspect-square w-32 shrink-0 overflow-hidden rounded-full border-4 border-card bg-card shadow-medium ring-4 md:w-36 lg:w-40',
                       ringColor,
                     )}
                   >

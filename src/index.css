@@ -150,6 +150,12 @@
     #2a241e 70%,
     #ef322033 100%
   );
+  --gradient-soft: linear-gradient(180deg, #0f0d0a 0%, #1a1612 100%);
+
+  --shadow-soft: 0 4px 24px -4px rgb(0 0 0 / 0.35);
+  --shadow-medium: 0 8px 32px -8px rgb(0 0 0 / 0.45);
+  --shadow-strong: 0 16px 48px -12px rgb(0 0 0 / 0.55);
+  --shadow-postit: 2px 4px 12px rgb(0 0 0 / 0.4);
 }
 
 @keyframes accordion-down {

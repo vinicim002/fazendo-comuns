@@ -14,7 +14,8 @@ export function HomeNav() {
   return (
     <nav aria-label="Navegação principal" className="relative w-full">
       {/* Desktop */}
-      <ul className="hidden flex-wrap items-center justify-center gap-1 lg:flex">
+      <div className="hidden flex-wrap items-center justify-center gap-2 lg:flex">
+        <ul className="flex flex-wrap items-center justify-center gap-1">
         {mainNavigation.map((item) => (
           <li
             key={item.href}
@@ -61,7 +62,9 @@ export function HomeNav() {
             </AnimatePresence>
           </li>
         ))}
-      </ul>
+        </ul>
+        <ThemeToggle className="shrink-0" />
+      </div>
 
       {/* Mobile */}
       <div className="flex items-center justify-center gap-2 lg:hidden">

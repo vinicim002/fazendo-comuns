@@ -15,7 +15,7 @@ function NewsHomeCard({
   return (
     <article className="group overflow-hidden rounded-2xl border border-border/60 bg-card shadow-soft transition-all hover:-translate-y-0.5 hover:shadow-medium">
       <div className="flex min-w-0 flex-col min-[480px]:flex-row min-[480px]:items-stretch">
-        <div className="relative aspect-[16/10] w-full shrink-0 overflow-hidden bg-neutral-100 min-[480px]:aspect-auto min-[480px]:w-28 min-[480px]:min-h-[7.5rem] sm:w-32 sm:min-h-[8.5rem] md:w-36 md:min-h-[9.5rem]">
+        <div className="relative aspect-[16/10] w-full shrink-0 overflow-hidden bg-muted min-[480px]:aspect-auto min-[480px]:w-28 min-[480px]:min-h-[7.5rem] sm:w-32 sm:min-h-[8.5rem] md:w-36 md:min-h-[9.5rem]">
           <img
             src={news.image}
             alt={news.imageAlt}

@@ -15,7 +15,7 @@ const shareChannels: ShareChannel[] = [
     id: 'whatsapp',
     label: 'WhatsApp',
     className:
-      'border-emerald-200 bg-emerald-50 text-emerald-800 hover:border-emerald-300 hover:bg-emerald-100',
+      'border-emerald-200 bg-emerald-50 text-emerald-800 hover:border-emerald-300 hover:bg-emerald-100 dark:border-emerald-800 dark:bg-emerald-950/40 dark:text-emerald-200 dark:hover:border-emerald-700 dark:hover:bg-emerald-900/50',
     getHref: (url, _title, text) =>
       `https://wa.me/?text=${encodeURIComponent(`${text}\n${url}`)}`,
   },
@@ -23,7 +23,7 @@ const shareChannels: ShareChannel[] = [
     id: 'facebook',
     label: 'Facebook',
     className:
-      'border-blue-200 bg-blue-50 text-blue-800 hover:border-blue-300 hover:bg-blue-100',
+      'border-blue-200 bg-blue-50 text-blue-800 hover:border-blue-300 hover:bg-blue-100 dark:border-blue-800 dark:bg-blue-950/40 dark:text-blue-200 dark:hover:border-blue-700 dark:hover:bg-blue-900/50',
     getHref: (url) =>
       `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`,
   },
@@ -31,7 +31,7 @@ const shareChannels: ShareChannel[] = [
     id: 'x',
     label: 'X',
     className:
-      'border-neutral-300 bg-neutral-100 text-neutral-900 hover:border-neutral-400 hover:bg-neutral-200',
+      'border-border bg-muted text-foreground hover:border-border hover:bg-muted/80',
     getHref: (url, title) =>
       `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`,
   },
@@ -39,7 +39,7 @@ const shareChannels: ShareChannel[] = [
     id: 'linkedin',
     label: 'LinkedIn',
     className:
-      'border-sky-200 bg-sky-50 text-sky-900 hover:border-sky-300 hover:bg-sky-100',
+      'border-sky-200 bg-sky-50 text-sky-900 hover:border-sky-300 hover:bg-sky-100 dark:border-sky-800 dark:bg-sky-950/40 dark:text-sky-200 dark:hover:border-sky-700 dark:hover:bg-sky-900/50',
     getHref: (url) =>
       `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`,
   },
@@ -100,7 +100,7 @@ export function ShareButtons({
   return (
     <aside
       className={cn(
-        'rounded-2xl border border-border/60 bg-neutral-50 p-6 shadow-soft md:p-8',
+        'rounded-2xl border border-border/60 bg-muted p-6 shadow-soft md:p-8',
         className,
       )}
       aria-label="Compartilhar"

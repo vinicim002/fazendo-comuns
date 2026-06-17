@@ -51,7 +51,7 @@ export function AsCriancasFalamPage() {
       </section>
 
       <section
-        className="section-padding bg-neutral-50"
+        className="section-padding bg-muted"
         aria-label="Mesas e painéis do evento"
       >
         <div className="container-app mx-auto max-w-6xl">

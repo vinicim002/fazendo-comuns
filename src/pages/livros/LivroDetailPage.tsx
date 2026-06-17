@@ -194,7 +194,7 @@ export function LivroDetailPage() {
 
       <section
         id="leitura-do-livro"
-        className="section-padding scroll-mt-24 bg-neutral-50"
+        className="section-padding scroll-mt-24 bg-muted"
         aria-labelledby="leitura-livro-title"
       >
         <div className="container-app">
@@ -214,7 +214,7 @@ export function LivroDetailPage() {
               <iframe
                 title={`Leitura online — ${livro.title}`}
                 src={livro.readUrl}
-                className="h-[70vh] min-h-[420px] w-full bg-neutral-100"
+                className="h-[70vh] min-h-[420px] w-full bg-muted"
               />
             </div>
 
@@ -264,7 +264,7 @@ export function LivroDetailPage() {
         </div>
       </section>
 
-      <section className="section-padding bg-neutral-50" aria-labelledby="creditos-livro">
+      <section className="section-padding bg-muted" aria-labelledby="creditos-livro">
         <div className="container-app mx-auto max-w-3xl">
           <ScrollReveal>
             <h2
@@ -324,7 +324,7 @@ export function LivroDetailPage() {
         </section>
       ) : null}
 
-      <section className="section-padding bg-neutral-50">
+      <section className="section-padding bg-muted">
         <div className="container-app">
           <Button variant="outline" asChild>
             <Link to="/livros">

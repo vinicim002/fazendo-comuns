@@ -51,7 +51,7 @@ export function NoticiaDetailPage() {
               </time>
             </div>
 
-            <figure className="mt-8 overflow-hidden rounded-2xl border border-border/60 bg-neutral-50 shadow-soft">
+            <figure className="mt-8 overflow-hidden rounded-2xl border border-border/60 bg-muted shadow-soft">
               <img
                 src={noticia.heroImage}
                 alt={noticia.listImageAlt}

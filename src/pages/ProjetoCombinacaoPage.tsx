@@ -83,7 +83,7 @@ export function ProjetoCombinacaoPage() {
           key={book.id}
           className={cn(
             'section-padding',
-            bookIndex % 2 === 0 ? 'bg-neutral-50' : 'bg-background',
+            bookIndex % 2 === 0 ? 'bg-muted' : 'bg-background',
           )}
           aria-labelledby={`${book.id}-title`}
         >
@@ -156,7 +156,7 @@ export function ProjetoCombinacaoPage() {
         </div>
       </section>
 
-      <section className="section-padding bg-neutral-50" aria-label="Referências bibliográficas">
+      <section className="section-padding bg-muted" aria-label="Referências bibliográficas">
         <div className="container-app mx-auto max-w-4xl">
           <ScrollReveal>
             <h2 className="font-heading text-xl font-bold uppercase tracking-tight text-foreground md:text-2xl">

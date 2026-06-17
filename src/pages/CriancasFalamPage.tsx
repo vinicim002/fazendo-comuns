@@ -47,7 +47,7 @@ export function CriancasFalamPage() {
       </section>
 
       <section
-        className="section-padding bg-neutral-50"
+        className="section-padding bg-muted"
         aria-label="Voz das crianças sobre o recreio"
       >
         <div className="container-app flex flex-col gap-14 lg:gap-20">
