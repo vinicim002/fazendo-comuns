@@ -22,7 +22,7 @@ export function SeoHead({
       ? ogImage.startsWith('http')
         ? ogImage
         : absoluteUrl(ogImage)
-      : absoluteUrl('/favicon.svg')
+      : absoluteUrl('/favicon-192.png')
 
     applySeo(
       {
